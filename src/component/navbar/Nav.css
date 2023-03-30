@@ -1,18 +1,4 @@
-#fade-button{
-    color: orange;
-    
-}
 
-#fade-menu > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation8.MuiPopover-paper.css-1ka5eyc-MuiPaper-root-MuiMenu-paper-MuiPopover-paper{
+#root > div > div.MuiBox-root.css-1nrkto2 > header{
     background-color: black;
-    margin-top: 120px;
-    margin-left: 10px;
-}
-
-@media  screen and (max-width: 768px) {
-    #fade-menu > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation8.MuiPopover-paper.css-1ka5eyc-MuiPaper-root-MuiMenu-paper-MuiPopover-paper{
-        margin-left: 0px;
-        margin-top: 0px;
-    }
-   
 }

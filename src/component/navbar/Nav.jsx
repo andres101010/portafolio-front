@@ -1,52 +1,161 @@
-import { Box } from "@mui/system"
+
 import './Nav.css'
-import Button from '@mui/material/Button';
-import MenuIcon from '@mui/icons-material/Menu';
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
-import { Typography } from "@mui/material";
-import Fade from '@mui/material/Fade';
+import MenuIcon from '@mui/icons-material/Menu';
+import Container from '@mui/material/Container';
+import Avatar from '@mui/material/Avatar';
+import img from '../../assets/img/andres.jpg'
+import Tooltip from '@mui/material/Tooltip';
+import MenuItem from '@mui/material/MenuItem';
+import AdbIcon from '@mui/icons-material/Adb';
+
 import { useState } from "react";
 
+
+
 const Nav = () => {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
+
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
   };
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
   };
   
     return(
-        <Box>
-            <Button
-        id="fade-button"
-        aria-controls={open ? 'fade-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        onClick={handleClick}
-      >
-       <MenuIcon /> <Typography variant="h6">Menu</Typography> 
-      </Button>
-      <Menu
-        id="fade-menu"
-        MenuListProps={{
-          'aria-labelledby': 'fade-button',
-        }}
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        TransitionComponent={Fade}
-      >
-        <NavLink to="/perfil" style={{color:'orange', fontWeight:'bold', textDecoration:'none', fontFamily:'sans-serif', fontSize:'30px'}} > Mi perfil </NavLink><br />
-        <NavLink to="/proyectos"  style={{color:'orange', fontWeight:'bold', textDecoration:'none', fontFamily:'sans-serif',fontSize:'30px'}}> Mis Proyectos </NavLink><br />
-        <NavLink to="/contacto"  style={{color:'orange', fontWeight:'bold', textDecoration:'none',fontFamily:'sans-serif',fontSize:'30px'}}> Contacto </NavLink><br />
-        <NavLink to="/solicitudes"  style={{color:'orange', fontWeight:'bold', textDecoration:'none',fontFamily:'sans-serif',fontSize:'30px'}}> Solicitudes </NavLink><br />
-        <NavLink to="/login"  style={{color:'orange', fontWeight:'bold', textDecoration:'none',fontFamily:'sans-serif',fontSize:'30px'}}> Login </NavLink>
         
-      </Menu>
-        </Box>
+         <AppBar position="static">
+      <Container maxWidth="x1">
+        <Toolbar disableGutters>
+          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="/"
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            Portafolio
+          </Typography>
+
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+            >
+              
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              id="menu-appbar1"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{
+                display: { xs: 'block', md: 'none' },
+              }}
+            >
+               <NavLink to="/perfil" style={{color:'green', fontWeight:'bold', textDecoration:'none', fontFamily:'sans-serif', fontSize:'20px'}} > Perfil </NavLink><br />
+               <NavLink to="/proyectos"  style={{color:'green', fontWeight:'bold', textDecoration:'none', fontFamily:'sans-serif',fontSize:'20px'}}>  Proyectos </NavLink><br />
+               <NavLink to="/contacto"  style={{color:'green', fontWeight:'bold', textDecoration:'none',fontFamily:'sans-serif',fontSize:'20px'}}> Contacto </NavLink><br />
+               <NavLink to="/solicitudes"  style={{color:'green', fontWeight:'bold', textDecoration:'none',fontFamily:'sans-serif',fontSize:'20px'}}> Solicitudes </NavLink><br />
+               <NavLink to="/login"  style={{color:'green', fontWeight:'bold', textDecoration:'none',fontFamily:'sans-serif',fontSize:'20px'}}> Iniciar sesion </NavLink>
+            </Menu>
+          </Box>
+          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <Typography
+            variant="h5"
+            noWrap
+            component="a"
+            href=""
+            sx={{
+              mr: 2,
+              display: { xs: 'flex', md: 'none' },
+              flexGrow: 1,
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            Portafolio
+          </Typography>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <NavLink to="/perfil" style={{color:'white', fontWeight:'bold', textDecoration:'none', fontFamily:'sans-serif', fontSize:'25px', marginLeft:'100px'}} > Perfil </NavLink><br />
+          <NavLink to="/proyectos"  style={{color:'white', fontWeight:'bold', textDecoration:'none', fontFamily:'sans-serif',fontSize:'25px', marginLeft:'20px'}}>  Proyectos </NavLink><br />
+          <NavLink to="/contacto"  style={{color:'white', fontWeight:'bold', textDecoration:'none',fontFamily:'sans-serif',fontSize:'25px', marginLeft:'20px'}}> Contacto </NavLink><br />
+          <NavLink to="/solicitudes"  style={{color:'white', fontWeight:'bold', textDecoration:'none',fontFamily:'sans-serif',fontSize:'25px', marginLeft:'20px'}}> Solicitudes </NavLink><br />
+          <NavLink to="/login"  style={{color:'white', fontWeight:'bold', textDecoration:'none',fontFamily:'sans-serif',fontSize:'25px',marginLeft:'20px'}}> Iniciar sesion </NavLink>
+          </Box>
+
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt="Andres" src={img} />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar2"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              
+            
+            </Menu>
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
+        
     )
 }
 export default Nav;

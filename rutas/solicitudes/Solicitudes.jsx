@@ -1,9 +1,13 @@
-import { Box } from "@mui/system";
+import { Grid, Typography } from "@mui/material";
 const Solicitudes = ()=>{
     return(
-        <Box>
-            <h1>Solicitudes</h1>
-        </Box>
+        <Grid container>
+        <Typography variant="h1" color={'green'}>
+            Solicitudes
+        </Typography>
+
+        </Grid>
+      
     )
 }
 
