@@ -18,7 +18,7 @@ import { useState } from 'react';
 import Logaut from './component/logaut/Logaut';
 
 const App = () => {
-  const [isAllowed, setIsallowed] = useState(false);
+  const [isAllowed, setIsallowed] = useState(true);
 
   const getDataAllowed = (value)=>{
     if(value === ""){
@@ -27,7 +27,7 @@ const App = () => {
       setIsallowed(true)
     }
   }
-
+  console.log(isAllowed)
   return (
     <Container maxWidth="x1">
 
@@ -57,7 +57,7 @@ const App = () => {
         <Route element={ <ProtectedRoute isAllowed={isAllowed} />}>
           <Route path='/solicitudes' element={<Solicitudes />}></Route>
         </Route>
-        <Route path='/login' element={<Login getDataAllowed={getDataAllowed} />}></Route>
+        <Route path='/login' element={<Login getDataAllowed={getDataAllowed} isAllowed={isAllowed} setIsallowed={setIsallowed}/>}></Route>
      </Routes>
    <Grid container spacing={2} textAlign={'center'}>
     <Grid item md={6} xs={6}>
