@@ -7,24 +7,26 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import login2 from '/src/assets/img/login2.png';
 import './Login.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TextField from '@mui/material/TextField';
 import  Registrarse  from '../../src/component/registrarse/Registrarse';
 import Alert from '@mui/material/Alert';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import Solicitudes from '../solicitudes/Solicitudes';
+import { LocalStorage } from '../../src/component/LocalStorage';
 
 const Login = ({getDataAllowed})=>{
-  const [user, setUser] = useState("");
-  const [password, setPassword] = useState("");
+  const [user, setUser] = LocalStorage('user','');
+  const [password, setPassword] = LocalStorage('password','');
   const [showRegister, setShowRegister] = useState(false);
   const [showLogin, setShowLogin] = useState(true);
   const [showAlert, setShowAlert] = useState(false);
   const [showAlertValidationError, setShowAlertValidationError] = useState(false);
-
+  console.log(localStorage)
   const onChangeUser = (event) => { setUser(event.target.value)} 
   const onChangePassword = (event) => { setPassword(event.target.value)} 
- console.log(user,password)
+  console.log(user,password)
   const register = ()=>{
     setShowLogin(false)
     setShowRegister(true)
@@ -41,6 +43,7 @@ const Login = ({getDataAllowed})=>{
       setShowAlertValidationError(false)
     }, 2000)
   }
+  
 
   const inicioSesion = () =>{
     if(user === "" || password === ""){
@@ -53,6 +56,8 @@ const Login = ({getDataAllowed})=>{
        }).then((res)=>{
          getDataAllowed(res.data)
          navigate('/solicitudes')
+         setShowLogin(false)
+        
        }).catch((err)=>{
         console.log(err)
         setShowAlertValidationError(true)
@@ -60,7 +65,21 @@ const Login = ({getDataAllowed})=>{
        })
     }
   }
-  const navigate = useNavigate()
+
+  // useEffect(()=>{
+  //  const storedUser = localStorage.setItem('user', user);
+  //  const storedPassword = localStorage.setItem('password', password);
+  // 
+  //   if (storedUser && storedPassword) {
+
+  //     setUser(storedUser);
+  //     setPassword(storedPassword);
+  //   
+  //     console.log(user,password,isAllowed)
+  //   }
+  // }, [user,password]);
+
+   const navigate = useNavigate()
   
     return(
         <Grid container spacing={2} > 
@@ -77,7 +96,7 @@ const Login = ({getDataAllowed})=>{
           </Grid>
         }
         {
-          showLogin &&
+          showLogin ?
            <Grid container>
           <Grid item md={12} textAlign={'center'} style={{color:'green'}}>
             <Typography variant="h2">Inicio de sesion</Typography>
@@ -115,8 +134,8 @@ const Login = ({getDataAllowed})=>{
       </CardActions>
     </Card>
           </Grid>
-           </Grid>
-
+           </Grid> :
+           <Solicitudes user={user} />
         }
         {
             showRegister &&
