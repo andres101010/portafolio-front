@@ -12,6 +12,7 @@ import { useState } from 'react';
 import axios from 'axios';
 
 
+
  const Registrarse = ({
    setShowRegister, 
    setShowLogin, 
@@ -22,6 +23,8 @@ import axios from 'axios';
    onChangeUser,
    onChangePassword
 }) => {
+
+ 
     const[showCard, setShowCard] = useState (true);
    
     const sendRegister = (e) =>{
@@ -56,7 +59,7 @@ import axios from 'axios';
     <Grid container spacing={2}>
 
 
-        <Grid item  md={12} xs={12} textAlign={'center'} style={{color:'green'}}>
+        <Grid item  md={12} xs={12} mt={5} textAlign={'center'} style={{color:'green'}}>
           <Typography variant='h2'>
             Registrarse
           </Typography>

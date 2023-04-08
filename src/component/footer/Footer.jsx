@@ -3,7 +3,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { NavLink } from "react-router-dom";
-import { color } from "@mui/system";
+
 const Footer = ()=>{
     return(
         <Grid container>

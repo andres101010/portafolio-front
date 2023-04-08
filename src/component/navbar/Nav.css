@@ -1,4 +1,7 @@
 
-#root > div > div.MuiBox-root.css-1nrkto2 > header{
-    background-color: black;
+#root > div > header > div{
+    background-color: white;
+}
+#root > div > header > div > div > div.MuiBox-root.css-1lvtzne{
+    color: black;
 }

@@ -12,16 +12,13 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import img from '../../assets/img/andres.jpg'
 import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 
 import { useState } from "react";
 
-
-
-const Nav = () => {
+const useNav = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -37,13 +34,56 @@ const Nav = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-  
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+  return {
+    anchorElNav,
+    setAnchorElNav,
+    anchorElUser,
+    setAnchorElUser,
+    handleOpenNavMenu,
+    handleOpenUserMenu,
+    handleCloseNavMenu ,
+    handleCloseUserMenu,
+    handleMouseEnter,
+    handleMouseLeave,
+    isHovered
+  }
+};
+
+  const Nav = () => { 
+   const { anchorElNav,
+         setAnchorElNav,
+         anchorElUser,
+         setAnchorElUser,
+         handleOpenNavMenu,
+         handleOpenUserMenu,
+         handleCloseNavMenu ,
+         handleCloseUserMenu,
+         handleMouseEnter,
+         handleMouseLeave,
+         isHovered
+  } = useNav();
+  const style = {
+    color : isHovered ? "orange" : "black",
+    fontWeight:'bold',
+    textDecoration:'none',
+    fontFamily:'sans-serif',
+    fontSize:'25px',
+    marginLeft:'50px'
+  };
+
     return(
         
          <AppBar position="static">
       <Container maxWidth="x1">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+         
           <Typography
             variant="h6"
             noWrap
@@ -72,7 +112,7 @@ const Nav = () => {
               color="inherit"
             >
               
-              <MenuIcon />
+              <MenuIcon  />
             </IconButton>
             <Menu
               id="menu-appbar1"
@@ -92,14 +132,14 @@ const Nav = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-               <NavLink to="/perfil" style={{color:'green', fontWeight:'bold', textDecoration:'none', fontFamily:'sans-serif', fontSize:'20px'}} > Perfil </NavLink><br />
+               <NavLink to="/perfil" style={{color:'green', fontWeight:'bold', textDecoration:'none', fontFamily:'sans-serif', fontSize:'20px'}}> Perfil </NavLink><br />
                <NavLink to="/proyectos"  style={{color:'green', fontWeight:'bold', textDecoration:'none', fontFamily:'sans-serif',fontSize:'20px'}}>  Proyectos </NavLink><br />
                <NavLink to="/contacto"  style={{color:'green', fontWeight:'bold', textDecoration:'none',fontFamily:'sans-serif',fontSize:'20px'}}> Contacto </NavLink><br />
                <NavLink to="/solicitudes"  style={{color:'green', fontWeight:'bold', textDecoration:'none',fontFamily:'sans-serif',fontSize:'20px'}}> Solicitudes </NavLink><br />
                <NavLink to="/login"  style={{color:'green', fontWeight:'bold', textDecoration:'none',fontFamily:'sans-serif',fontSize:'20px'}}> Iniciar sesion </NavLink>
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          
           <Typography
             variant="h5"
             noWrap
@@ -119,11 +159,11 @@ const Nav = () => {
             Portafolio
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-          <NavLink to="/perfil" style={{color:'white', fontWeight:'bold', textDecoration:'none', fontFamily:'sans-serif', fontSize:'25px', marginLeft:'100px'}} > Perfil </NavLink><br />
-          <NavLink to="/proyectos"  style={{color:'white', fontWeight:'bold', textDecoration:'none', fontFamily:'sans-serif',fontSize:'25px', marginLeft:'20px'}}>  Proyectos </NavLink><br />
-          <NavLink to="/contacto"  style={{color:'white', fontWeight:'bold', textDecoration:'none',fontFamily:'sans-serif',fontSize:'25px', marginLeft:'20px'}}> Contacto </NavLink><br />
-          <NavLink to="/solicitudes"  style={{color:'white', fontWeight:'bold', textDecoration:'none',fontFamily:'sans-serif',fontSize:'25px', marginLeft:'20px'}}> Solicitudes </NavLink><br />
-          <NavLink to="/login"  style={{color:'white', fontWeight:'bold', textDecoration:'none',fontFamily:'sans-serif',fontSize:'25px',marginLeft:'20px'}}> Iniciar sesion </NavLink>
+          <NavLink to="/perfil" style={style} onMouseEnter={ handleMouseEnter} onMouseLeave={handleMouseLeave} > Perfil </NavLink><br />
+          <NavLink to="/proyectos"  style={style} onMouseEnter={ handleMouseEnter} onMouseLeave={handleMouseLeave}>  Proyectos </NavLink><br />
+          <NavLink to="/contacto"  style={style} onMouseEnter={ handleMouseEnter} onMouseLeave={handleMouseLeave}> Contacto </NavLink><br />
+          <NavLink to="/solicitudes"  style={style} onMouseEnter={ handleMouseEnter} onMouseLeave={handleMouseLeave}> Solicitudes </NavLink><br />
+          <NavLink to="/login"  style={style} onMouseEnter={ handleMouseEnter} onMouseLeave={handleMouseLeave}> Iniciar sesion </NavLink>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

@@ -6,7 +6,6 @@ import './Title.css';
 
 const array = [
     {palabra:'Developer Front-End'},
-    // {palabra:'Front-End'}
  ];
 
 
@@ -16,14 +15,14 @@ const Title = () => {
     return(
         <Box className='title'>
           <Grid container >
-             <Grid item md={12} mb={2}>
-                   <Typography className='animated-header2' variant='h1'>Hola, soy Andr&eacute;s Morales. </Typography>
+             <Grid item md={6} ml={2} mt={5}>
+                   <Typography className='animated-header2' variant='h2'>Hola, soy Andr&eacute;s Morales. </Typography>
                 </Grid>
           </Grid>
             <Grid container>
                  {
                     array.map((element) =>(
-                        <Grid item  xs={12} md={12} key={element.palabra}>
+                        <Grid item ml={2}  xs={12} md={12} key={element.palabra} >
                             <Typography className='animated-header' variant='h2' >{element.palabra}</Typography>
                         </Grid>
                     ))

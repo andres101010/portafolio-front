@@ -16,9 +16,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 
-
-
-const Imagen = () => {
+const useImagen = () => {
   const [showImg, setShowImg] = useState(false)
   
   const imagenes = [
@@ -41,14 +39,28 @@ const Imagen = () => {
      timeOut()
      clearTimeout(timeOut())
   },[]);
+
+  return {
+    showImg,
+    setShowImg,
+    imagenes,
+    timeOut,
+  }
+};
+
+const Imagen = () => {
+  const { showImg,
+          imagenes,
+          timeOut } = useImagen();
+          timeOut();
+ 
     return(
-        <Grid container mt={5} className='container-img'>
-            <Grid item md={12} xs={12} ml={2} >
-         
-         <Card sx={{maxWidth: 500, height:'500', margin:"auto", marginBottom:2}}>
+        <Grid container  mt={5} className='container-img'>
+            <Grid item md={5} xs={12} >
+         <Card sx={{maxWidth: 400, height:'200', margin:"auto"}}>
          <CardActionArea>
        <CardMedia
-         sx={{ height: 400, margin:"auto", padding:"auto" }}
+         sx={{ height: 280, margin:"auto", padding:"auto" }}
           image={andres}
           title="Andres"
        />
@@ -64,25 +76,28 @@ const Imagen = () => {
        </CardActionArea>
      </Card>
          </Grid>
-          <Grid item xs={12} mb={2}>
-          <Typography variant='h4' color={"white"}>Habilidades</Typography>
-            </Grid> 
+          <Grid item md={6} xs={12} mb={2} ml={5} mt={1}>
+          <Typography variant='h4' color={"orange"}>Habilidades :</Typography>
+
           {
             showImg &&
-            
            imagenes.map((item)=>( 
-           
-            <Grid item margin={'auto'}  key={item.id}>
-             
-              <img src={item.img} alt="imagen"/>
-              </Grid>
-         
+              <img src={item.img} key={item.id} alt="imagen" style={{margin:'5px'}}/>
            ))
-
           }
-          <Grid item md={12}>
-             
-          </Grid>
+         <ul style={{color:"green", fontSize:'20px'}}>
+          <li>Html</li>
+          <li>Css</li>
+          <li>JavaScript</li>
+          <li>Bootstrap</li>
+          <li>Material UI</li>
+          <li>Node.js</li>
+          <li>Express.js</li>
+          <li>MySql</li>
+          <li>GitHub</li>
+         </ul>
+            </Grid> 
+       
           </Grid>
 
         

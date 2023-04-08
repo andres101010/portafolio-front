@@ -7,26 +7,25 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import login2 from '/src/assets/img/login2.png';
 import './Login.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import  Registrarse  from '../../src/component/registrarse/Registrarse';
 import Alert from '@mui/material/Alert';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-import Solicitudes from '../solicitudes/Solicitudes';
 import { LocalStorage } from '../../src/component/LocalStorage';
 
-const Login = ({getDataAllowed})=>{
+const useLogin = () => {
   const [user, setUser] = LocalStorage('user','');
   const [password, setPassword] = LocalStorage('password','');
   const [showRegister, setShowRegister] = useState(false);
   const [showLogin, setShowLogin] = useState(true);
   const [showAlert, setShowAlert] = useState(false);
   const [showAlertValidationError, setShowAlertValidationError] = useState(false);
-  console.log(localStorage)
+ 
   const onChangeUser = (event) => { setUser(event.target.value)} 
   const onChangePassword = (event) => { setPassword(event.target.value)} 
-  console.log(user,password)
+ 
   const register = ()=>{
     setShowLogin(false)
     setShowRegister(true)
@@ -42,8 +41,47 @@ const Login = ({getDataAllowed})=>{
     setTimeout(()=>{
       setShowAlertValidationError(false)
     }, 2000)
+  };
+ 
+  return {
+    user,
+    password,
+    showRegister,
+    setShowRegister,
+    showLogin,
+    setShowLogin,
+    showAlert,
+    setShowAlert,
+    showAlertValidationError,
+    onChangeUser,
+    onChangePassword,
+    register,
+    timeOutAlert,
+    timeOutAlertValidation,
+    setShowAlertValidationError
+   
   }
-  
+}
+const Login = ({getDataAllowed})=>{
+
+  const { user,
+          password,
+          showRegister,
+          setShowRegister,
+          showLogin,
+          setShowLogin,
+          showAlert,
+          setShowAlert,
+          showAlertValidationError,
+          onChangeUser,
+          onChangePassword,
+          register,
+          timeOutAlert,
+          timeOutAlertValidation,      
+          setShowAlertValidationError
+         
+         } = useLogin()
+ 
 
   const inicioSesion = () =>{
     if(user === "" || password === ""){
@@ -59,7 +97,7 @@ const Login = ({getDataAllowed})=>{
          setShowLogin(false)
         
        }).catch((err)=>{
-        console.log(err)
+       
         setShowAlertValidationError(true)
         timeOutAlertValidation()
        })
@@ -96,9 +134,9 @@ const Login = ({getDataAllowed})=>{
           </Grid>
         }
         {
-          showLogin ?
+          showLogin &&
            <Grid container>
-          <Grid item md={12} textAlign={'center'} style={{color:'green'}}>
+          <Grid item md={12} mt={5} textAlign={'center'} style={{color:'green'}}>
             <Typography variant="h2">Inicio de sesion</Typography>
           </Grid>
           <Grid item  md={12} xs={12} ml={2} >
@@ -134,8 +172,8 @@ const Login = ({getDataAllowed})=>{
       </CardActions>
     </Card>
           </Grid>
-           </Grid> :
-           <Solicitudes user={user} />
+           </Grid> 
+        
         }
         {
             showRegister &&
