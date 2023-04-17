@@ -20,6 +20,7 @@ import NotFound from '../rutas/notFound/NotFound';
 const useGlobalState = ()=>{
   const [isAllowed, setIsallowed] = useState(false);
   //Estados y funciones de solicitudes y contactos
+  const [idsolicitudes, setIdSolicitudes] = useState("");
   const [nombre, setNombre] = useState("");
   const [correo, setCorreo] = useState("");
   const [telefono, setTelefono] = useState("");
@@ -56,7 +57,9 @@ const useGlobalState = ()=>{
     changeCorreo,
     changeTelefono,
     changeSolicitud,
-    changeComentario
+    changeComentario,
+    idsolicitudes,
+    setIdSolicitudes
   }
 }
 // Aqui comienza el omponente app.js**************
@@ -78,7 +81,9 @@ const App = () => {
             changeCorreo,
             changeTelefono,
             changeSolicitud,
-            changeComentario
+            changeComentario,
+            idsolicitudes,
+            setIdSolicitudes
             } = useGlobalState()
    
   return (
@@ -133,6 +138,8 @@ const App = () => {
            changeTelefono={changeTelefono}
            changeSolicitud={changeSolicitud}
            changeComentario={changeComentario}
+           idsolicitudes={idsolicitudes}
+           setIdSolicitudes={setIdSolicitudes}
           />}></Route>
         </Route>
         <Route path='/login' element={<Login getDataAllowed={getDataAllowed} isAllowed={isAllowed} setIsallowed={setIsallowed}/>}></Route>

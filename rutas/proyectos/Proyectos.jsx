@@ -1,9 +1,9 @@
+import './Proyectos.css'
 import { Grid, Typography } from "@mui/material";
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import crudReact from '/src/assets/img/crud-react.png'
 import ecommer1 from '/src/assets/img/ecommer1.png'
 import loginImg from '/src/assets/img/login.png'
@@ -19,12 +19,13 @@ const Proyecto = ()=>{
             <Typography variant="h2">Proyectos</Typography>
             </Grid>
 
-    <Grid item md={4} m={'auto'} mb={'5px'}>
-     <Card sx={{ maxWidth: 345  }}>
+    <Grid item md={4} m={'auto'} mb={'5px'} className="itemProyect">
+     <Card sx={{ width: 345  }} className="itemProyect">
         <CardMedia
         sx={{ height: 200, width:"auto" }}
         image={crudReact}
         title="Crud"
+        
       />
        <CardContent style={{backgroundColor:'black', color:'white'}}>
         <Typography gutterBottom variant="h5" component="div">
@@ -41,8 +42,8 @@ const Proyecto = ()=>{
       </CardActions>
     </Card>
      </Grid>
-    <Grid item md={4} m={'auto'} mb={'5px'}>
-     <Card sx={{ maxWidth: 345 }}>
+    <Grid item md={4} m={'auto'} mb={'5px'}  className="itemProyect">
+     <Card sx={{ width: 345 }}  className="itemProyect">
         <CardMedia
         sx={{ height: 195 }}
         image={ecommer1}
@@ -63,8 +64,8 @@ const Proyecto = ()=>{
       </CardActions>
     </Card>
      </Grid>
-    <Grid item md={4} m={'auto'} mb={'5px'}>
-     <Card sx={{ maxWidth: 345 }}>
+    <Grid item md={4} m={'auto'} mb={'5px'}  className="itemProyect">
+     <Card sx={{ width: 345 }}  className="itemProyect">
         <CardMedia
         sx={{ height: 200 }}
         image={loginImg}
@@ -85,8 +86,8 @@ const Proyecto = ()=>{
       </CardActions>
     </Card>
      </Grid>
-    <Grid item md={4} m={'auto'} mb={'5px'}>
-     <Card sx={{ maxWidth: 345 }}>
+    <Grid item md={4} m={'auto'} mb={'5px'}  className="itemProyect">
+     <Card sx={{ width: 345 }}  className="itemProyect">
         <CardMedia
         sx={{ height: 200 }}
         image={pPt}
@@ -106,8 +107,8 @@ const Proyecto = ()=>{
       </CardActions>
     </Card>
      </Grid>
-    <Grid item md={4} m={'auto'} mb={'5px'}>
-     <Card sx={{ maxWidth: 345 }}>
+    <Grid item md={4} m={'auto'} mb={'5px'}  className="itemProyect">
+     <Card sx={{ width: 345 }} className="itemProyect">
         <CardMedia
         sx={{ height: 200 }}
         image={tenis}
@@ -128,8 +129,8 @@ const Proyecto = ()=>{
       </CardActions>
     </Card>
      </Grid>
-    <Grid item md={4} m={'auto'} mb={'5px'}>
-     <Card sx={{ maxWidth: 345 }}>
+    <Grid item md={4} m={'auto'} mb={'5px'} className="itemProyect">
+     <Card sx={{ width: 345 }}  className="itemProyect">
         <CardMedia
         sx={{ height: 200 }}
         image={consultora}
