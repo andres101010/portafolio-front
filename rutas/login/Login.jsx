@@ -13,11 +13,12 @@ import  Registrarse  from '../../src/component/registrarse/Registrarse';
 import Alert from '@mui/material/Alert';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-import { LocalStorage } from '../../src/component/LocalStorage';
+
 
 const useLogin = () => {
-  const [user, setUser] = LocalStorage('user','');
-  const [password, setPassword] = LocalStorage('password','');
+  const [idlogin, setIdlogin] = useState('')
+  const [user, setUser] = useState('');
+  const [password, setPassword] = useState('');
   const [showRegister, setShowRegister] = useState(false);
   const [showLogin, setShowLogin] = useState(true);
   const [showAlert, setShowAlert] = useState(false);
@@ -34,16 +35,17 @@ const useLogin = () => {
   const timeOutAlert = () => {
     setTimeout(()=>{
       setShowAlert(false)
-    }, 2000)
+    }, 4000)
   }
 
   const timeOutAlertValidation = () => {
     setTimeout(()=>{
       setShowAlertValidationError(false)
-    }, 2000)
+    }, 4000)
   };
  
   return {
+    idlogin,
     user,
     password,
     showRegister,
@@ -64,7 +66,8 @@ const useLogin = () => {
 }
 const Login = ({getDataAllowed})=>{
 
-  const { user,
+  const { idlogin,
+          user,
           password,
           showRegister,
           setShowRegister,
@@ -89,33 +92,20 @@ const Login = ({getDataAllowed})=>{
         timeOutAlert()
     }else{
        axios.post('http://localhost:3001/login', {
+        idlogin: idlogin,
         user: user,
         password: password
        }).then((res)=>{
          getDataAllowed(res.data)
          navigate('/solicitudes')
-         setShowLogin(false)
-        
+         setShowLogin(false) 
        }).catch((err)=>{
-       
+         console.log(err)
         setShowAlertValidationError(true)
         timeOutAlertValidation()
        })
     }
   }
-
-  // useEffect(()=>{
-  //  const storedUser = localStorage.setItem('user', user);
-  //  const storedPassword = localStorage.setItem('password', password);
-  // 
-  //   if (storedUser && storedPassword) {
-
-  //     setUser(storedUser);
-  //     setPassword(storedPassword);
-  //   
-  //     console.log(user,password,isAllowed)
-  //   }
-  // }, [user,password]);
 
    const navigate = useNavigate()
   
@@ -129,7 +119,7 @@ const Login = ({getDataAllowed})=>{
         }
         {
           showAlertValidationError && 
-          <Grid item px={5} md={6} xs={12} style={{margin:"auto"}}>
+          <Grid item px={5} md={6} xs={12} style={{margin:"auto", marginTop:'30px'}}>
             <Alert severity="error">Usuario o contraseña invalido!</Alert>
           </Grid>
         }
@@ -153,8 +143,8 @@ const Login = ({getDataAllowed})=>{
             Inicio de sesion
           </Typography>
           <Typography variant="body1" color="text.secondary">
-            En esta opcion de inicio de secion, podras tener la ventaja de aceder a la lista de 
-            solicitudes mandadas para que puedas hacer un seguimiento sobre tu peticion.
+            En esta opcion de inicio de sesion, podras tener la ventaja de aceder a la lista de 
+            solicitudes mandadas para que puedas editar, borrar tu solicitud si lo deseas.
           </Typography>
         </CardContent>
       </CardActionArea>

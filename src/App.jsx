@@ -14,9 +14,23 @@ import Footer from './component/footer/Footer';
 import {ProtectedRoute} from './component/protectedRoute/ProtectedRoute'
 import { useState } from 'react';
 import Logaut from './component/logaut/Logaut';
+import NotFound from '../rutas/notFound/NotFound';
 
+// Custom Hooks app,js***
 const useGlobalState = ()=>{
   const [isAllowed, setIsallowed] = useState(false);
+  //Estados y funciones de solicitudes y contactos
+  const [nombre, setNombre] = useState("");
+  const [correo, setCorreo] = useState("");
+  const [telefono, setTelefono] = useState("");
+  const [Solicitud, setSolicitud] = useState("");
+  const [comentario, setComentario] = useState("");
+  const changeNombre = (event) => {setNombre(event.target.value)};
+  const changeCorreo = (event) => {setCorreo(event.target.value)};
+  const changeTelefono = (event) => {setTelefono(event.target.value)};
+  const changeSolicitud = (event) => {setSolicitud(event.target.value)};
+  const changeComentario = (event) => {setComentario(event.target.value)};
+  //***************************************************** */
   const getDataAllowed = (value)=>{
     if(value === ""){
       setIsallowed(false)
@@ -28,13 +42,43 @@ const useGlobalState = ()=>{
     getDataAllowed,
     isAllowed,
     setIsallowed,
+    nombre,
+    setNombre,
+    correo,
+    setCorreo,
+    telefono,
+    setTelefono,
+    Solicitud,
+    setSolicitud,
+    comentario,
+    setComentario,
+    changeNombre,
+    changeCorreo,
+    changeTelefono,
+    changeSolicitud,
+    changeComentario
   }
 }
-
+// Aqui comienza el omponente app.js**************
 const App = () => {
     const { getDataAllowed,
             isAllowed,
-            setIsallowed
+            setIsallowed,
+            nombre,
+            setNombre,
+            correo,
+            setCorreo,
+            telefono,
+            setTelefono,
+            Solicitud,
+            setSolicitud,
+            comentario,
+            setComentario,
+            changeNombre,
+            changeCorreo,
+            changeTelefono,
+            changeSolicitud,
+            changeComentario
             } = useGlobalState()
    
   return (
@@ -55,11 +99,44 @@ const App = () => {
       }>
       </Route>
         <Route path='/proyectos' element={<Proyecto />}></Route>
-        <Route path='/contacto' element={<Contacto />}></Route>
+        <Route path='/contacto' element={<Contacto 
+        nombre={nombre}
+        setNombre={setNombre}
+        correo={correo}
+        setCorreo={setCorreo}
+        telefono={telefono}
+        setTelefono={setTelefono}
+        Solicitud={Solicitud}
+        setSolicitud={setSolicitud}
+        comentario={comentario}
+        setComentario={setComentario}
+        changeNombre={changeNombre}
+        changeCorreo={changeCorreo}
+        changeTelefono={changeTelefono}
+        changeSolicitud={changeSolicitud}
+        changeComentario={changeComentario}
+        />}></Route>
         <Route element={ <ProtectedRoute isAllowed={isAllowed} />}>
-          <Route path='/solicitudes' element={<Solicitudes />}></Route>
+          <Route path='/solicitudes' element={<Solicitudes 
+           nombre={nombre}
+           setNombre={setNombre}
+           correo={correo}
+           setCorreo={setCorreo}
+           telefono={telefono}
+           setTelefono={setTelefono}
+           Solicitud={Solicitud}
+           setSolicitud={setSolicitud}
+           comentario={comentario}
+           setComentario={setComentario}
+           changeNombre={changeNombre}
+           changeCorreo={changeCorreo}
+           changeTelefono={changeTelefono}
+           changeSolicitud={changeSolicitud}
+           changeComentario={changeComentario}
+          />}></Route>
         </Route>
         <Route path='/login' element={<Login getDataAllowed={getDataAllowed} isAllowed={isAllowed} setIsallowed={setIsallowed}/>}></Route>
+        <Route path='*' element={<NotFound/>}></Route>
      </Routes>
  
       <Footer />

@@ -9,7 +9,7 @@ import node from '/src/assets/img/node.png'
 import express from '/src/assets/img/express.png'
 import mysql from '/src/assets/img/mysql.jpg'
 import git from '/src/assets/img/GitHub.png'
-import andres from '/src/assets/img/andres3.jpg'
+import andres from '/src/assets/img/andresFondo.png'
 import './Imagen.css'
 import { Grid,  CardActionArea } from '@mui/material'
 import Card from '@mui/material/Card';

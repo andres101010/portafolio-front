@@ -5,7 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import crudReact from '/src/assets/img/crud-react.png'
-import ecommer from '/src/assets/img/ecommer.png'
+import ecommer1 from '/src/assets/img/ecommer1.png'
 import loginImg from '/src/assets/img/login.png'
 import pPt from '/src/assets/img/piedra-papel-tijeras.png'
 import tenis from '/src/assets/img/tenis.png'
@@ -37,7 +37,7 @@ const Proyecto = ()=>{
        </CardContent >
       <CardActions style={{backgroundColor:'black', color:'white'}}>
          Link del codigo en GitHub:            
-        <NavLink to={'https://github.com/andres101010/crud-react-front'} target="_blank" style={{textDecoration:'none', color:'blue'}} >Crud React</NavLink>
+        <NavLink to={'https://github.com/andres101010/crud-react-front'} target="_blank" style={{textDecoration:'none', marginLeft:"55px"}} >Crud React</NavLink>
       </CardActions>
     </Card>
      </Grid>
@@ -45,7 +45,7 @@ const Proyecto = ()=>{
      <Card sx={{ maxWidth: 345 }}>
         <CardMedia
         sx={{ height: 195 }}
-        image={ecommer}
+        image={ecommer1}
         title="Ecommer"
       />
        <CardContent style={{backgroundColor:'black',color:'white', paddingBottom:'1px'}} >
@@ -59,7 +59,7 @@ const Proyecto = ()=>{
        </CardContent >
       <CardActions style={{backgroundColor:'black', color:'white'}}>
       Link del codigo en GitHub:            
-        <NavLink to={'https://github.com/andres101010/marketplace-front'} target="_blank" style={{textDecoration:'none', color:'blue'}} > Ecommer</NavLink>
+        <NavLink to={'https://github.com/andres101010/marketplace-front'} target="_blank" style={{textDecoration:'none',marginLeft:"65px"}} > Ecommer</NavLink>
       </CardActions>
     </Card>
      </Grid>
@@ -81,7 +81,7 @@ const Proyecto = ()=>{
        </CardContent>
       <CardActions style={{backgroundColor:'black', color:'white'}}>
       Link del codigo en GitHub:
-      <NavLink to={'https://github.com/andres101010/challenge7'} target="_blank" style={{textDecoration:'none', color:'blue'}} >Login</NavLink>
+      <NavLink to={'https://github.com/andres101010/challenge7'} target="_blank" style={{textDecoration:'none', marginLeft:"95px"}} >Login</NavLink>
       </CardActions>
     </Card>
      </Grid>
@@ -102,7 +102,7 @@ const Proyecto = ()=>{
        </CardContent>
       <CardActions style={{backgroundColor:'black', color:'white'}}>
       Link del codigo en GitHub:
-      <NavLink to={'https://github.com/andres101010/piedra-papel-tijeras'} target="_blank" style={{textDecoration:'none', color:'blue'}} >Piedra,Papel,Tijeras</NavLink>
+      <NavLink to={'https://github.com/andres101010/piedra-papel-tijeras'} target="_blank" style={{textDecoration:'none'}} >Piedra,Papel,Tijeras</NavLink>
       </CardActions>
     </Card>
      </Grid>
@@ -124,7 +124,7 @@ const Proyecto = ()=>{
        </CardContent>
       <CardActions style={{backgroundColor:'black', color:'white'}}>
       Link del codigo en GitHub:
-      <NavLink to={'https://github.com/andres101010/club-tenis'} target="_blank" style={{textDecoration:'none', color:'blue'}} >Club de Tenis</NavLink>
+      <NavLink to={'https://github.com/andres101010/club-tenis'} target="_blank" style={{textDecoration:'none',marginLeft:"40px"}} >Club de Tenis</NavLink>
       </CardActions>
     </Card>
      </Grid>
@@ -145,7 +145,7 @@ const Proyecto = ()=>{
        </CardContent>
       <CardActions style={{backgroundColor:'black', color:'white'}}>
       Link de la pagina:
-      <NavLink to={'https://andres101010.github.io/consultora/'} target="_blank" style={{textDecoration:'none', color:'blue'}} >Consultora</NavLink>
+      <NavLink to={'https://andres101010.github.io/consultora/'} target="_blank" style={{textDecoration:'none', marginLeft:"120px"}}>Consultora</NavLink>
       </CardActions>
     </Card>
      </Grid>

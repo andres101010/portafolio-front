@@ -88,14 +88,14 @@ const useNav = () => {
             variant="h6"
             noWrap
             component="a"
-            href="/"
+            href="/perfil"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: 'black',
               textDecoration: 'none',
             }}
           >
@@ -132,11 +132,11 @@ const useNav = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-               <NavLink to="/perfil" style={{color:'green', fontWeight:'bold', textDecoration:'none', fontFamily:'sans-serif', fontSize:'20px'}}> Perfil </NavLink><br />
-               <NavLink to="/proyectos"  style={{color:'green', fontWeight:'bold', textDecoration:'none', fontFamily:'sans-serif',fontSize:'20px'}}>  Proyectos </NavLink><br />
-               <NavLink to="/contacto"  style={{color:'green', fontWeight:'bold', textDecoration:'none',fontFamily:'sans-serif',fontSize:'20px'}}> Contacto </NavLink><br />
-               <NavLink to="/solicitudes"  style={{color:'green', fontWeight:'bold', textDecoration:'none',fontFamily:'sans-serif',fontSize:'20px'}}> Solicitudes </NavLink><br />
-               <NavLink to="/login"  style={{color:'green', fontWeight:'bold', textDecoration:'none',fontFamily:'sans-serif',fontSize:'20px'}}> Iniciar sesion </NavLink>
+               <NavLink to="/perfil" style={{color:'black', fontWeight:'bold', textDecoration:'none', fontFamily:'sans-serif', fontSize:'20px'}}> Perfil </NavLink><br />
+               <NavLink to="/proyectos"  style={{color:'black', fontWeight:'bold', textDecoration:'none', fontFamily:'sans-serif',fontSize:'20px'}}>  Proyectos </NavLink><br />
+               <NavLink to="/contacto"  style={{color:'black', fontWeight:'bold', textDecoration:'none',fontFamily:'sans-serif',fontSize:'20px'}}> Contacto </NavLink><br />
+               <NavLink to="/solicitudes"  style={{color:'black', fontWeight:'bold', textDecoration:'none',fontFamily:'sans-serif',fontSize:'20px'}}> Solicitudes </NavLink><br />
+               <NavLink to="/login"  style={{color:'black', fontWeight:'bold', textDecoration:'none',fontFamily:'sans-serif',fontSize:'20px'}}> Iniciar sesion </NavLink>
             </Menu>
           </Box>
           

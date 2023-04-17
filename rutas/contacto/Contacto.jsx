@@ -11,16 +11,7 @@ import './Contacto.css'
 const useContact = () => {
     const [alertContact, setAlertContact] = useState(false);
     const [alertContactSuccess, setAlertContactSuccess] = useState(false);
-    const [nombre, setNombre] = useState("");
-    const [correo, setCorreo] = useState("");
-    const [telefono, setTelefono] = useState("");
-    const [Solicitud, setSolicitud] = useState("");
-    const [comentario, setComentario] = useState("");
-    const changeNombre = (event) => {setNombre(event.target.value)};
-    const changeCorreo = (event) => {setCorreo(event.target.value)};
-    const changeTelefono = (event) => {setTelefono(event.target.value)};
-    const changeSolicitud = (event) => {setSolicitud(event.target.value)};
-    const changeComentario = (event) => {setComentario(event.target.value)};
+   
 
     const timeContactAlert = () => {
       setTimeout(()=>{
@@ -33,72 +24,70 @@ const useContact = () => {
       }, 4000)
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        if(nombre === "" ||
-           correo === "" ||
-           telefono === "" ||
-           Solicitud === "" ||
-           comentario === ""){
-              setAlertContact(true)
-              timeContactAlert()
-           }else { 
-            axios.post('http://localhost:3001/contacto/crear-solicitud',{
-            nombre:nombre,
-            correo:correo,
-            telefono:telefono,
-            solicitud: Solicitud,
-            comentario: comentario
-           }).then((resp)=>{
-              setNombre("")
-              setCorreo("")
-              setTelefono("")
-              setSolicitud("")
-              setComentario("")
-              setAlertContactSuccess(true)
-              timeContactAlertSuccess()
-           })
-          }
-        }
+  
         return { alertContact,
                  setAlertContact,
                  alertContactSuccess,
                  setAlertContactSuccess,
-                 nombre,
-                 setNombre,
-                 correo,
-                 setCorreo,
-                 telefono,
-                 setTelefono,
-                 Solicitud,
-                 setSolicitud,
-                 changeNombre,
-                 changeCorreo,
-                 changeTelefono,
-                 changeSolicitud,
-                 changeComentario,
                  timeContactAlert,
                  timeContactAlertSuccess,
-                 handleSubmit
+                 
         }
 }
-const Contacto = ()=>{
+const Contacto = ({
+  nombre,
+  setNombre,
+  correo,
+  setCorreo,
+  telefono,
+  setTelefono,
+  Solicitud,
+  setSolicitud,
+  comentario,
+  setComentario,
+  changeNombre,
+  changeCorreo,
+  changeTelefono,
+  changeSolicitud,
+  changeComentario,
+})=>{
   const { 
     alertContact,
     alertContactSuccess,
-    changeNombre,
-    changeCorreo,
-    changeTelefono,
-    changeSolicitud,
-    changeComentario,
+    setAlertContact,
+    setAlertContactSuccess,
     timeContactAlert,
     timeContactAlertSuccess,
-    handleSubmit
+    
   } = useContact();
   
-  timeContactAlert();
-  timeContactAlertSuccess();
-
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if(nombre === "" ||
+       correo === "" ||
+       telefono === "" ||
+       Solicitud === "" ||
+       comentario === ""){
+          setAlertContact(true)
+          timeContactAlert()
+       }else { 
+        axios.post('http://localhost:3001/contacto/crear-solicitud',{
+        nombre:nombre,
+        correo:correo,
+        telefono:telefono,
+        solicitud: Solicitud,
+        comentario: comentario
+       }).then((resp)=>{
+          setNombre("")
+          setCorreo("")
+          setTelefono("")
+          setSolicitud("")
+          setComentario("")
+          setAlertContactSuccess(true)
+          timeContactAlertSuccess()
+       })
+      }
+    }
     return(
         <Grid container>
             <Grid item md={12} xs={12} textAlign={'center'} style={{color:'green'}}>
