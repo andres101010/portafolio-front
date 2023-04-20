@@ -13,8 +13,10 @@ import EditIcon from '@mui/icons-material/Edit';
 import Alert from '@mui/material/Alert';
 
 
+
 const useSolicitudes = () => {
   const [data, setData] = useState([]);
+  const [serch, setSerch] = useState("");
   const [showTable, SetshowTable] = useState(true);
   const [showForm, Setshowform] = useState(false);
   const [showAlertSolicitud, SetshowAlertSolicitud] = useState(false);
@@ -48,10 +50,13 @@ const timeAlertShowSolicitudError = () => {
      SetshowAlertErrorEliminar(false)
    },3000)
 }
-
+console.log(serch)
 useEffect(()=>{
    getData()
 },[]);
+
+const result = !serch ? data : data.filter((datos)=> datos.nombre.toLocaleLowerCase().includes(serch.toLocaleLowerCase()));
+
 return{
   data,
   showTable,
@@ -70,7 +75,9 @@ return{
   showAlertEliminar,
   SetshowAlertEliminar,
   showAlertErrorEliminar,
-  SetshowAlertErrorEliminar
+  SetshowAlertErrorEliminar,
+  setSerch,
+  result
 }
 };
 
@@ -113,7 +120,8 @@ const Solicitudes = ({
     showAlertErrorEliminar,
     SetshowAlertEliminar,
     showAlertEliminar,
-    
+    setSerch,
+    result
   } = useSolicitudes();
 
   const edit = ((obj)=>{
@@ -196,8 +204,8 @@ const eliminar = ((idsolicitudes)=>{
                 <Alert severity="error">No se pudo eliminar registro!!!!</Alert>
               }
      { showTable &&
-
       <TableContainer style={{ marginBottom:'5px'}}  >
+      <TextField type="input" id="outlined-basic" label="Busca tu Nombre" onChange={(e)=>{setSerch(e.target.value)}} style={{margin:'10px', float:'right'}} />
       <Table sx={{ minWidth: 650, border: 2 }} aria-label="simple table">
         <TableHead>
           <TableRow>
@@ -212,7 +220,7 @@ const eliminar = ((idsolicitudes)=>{
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.length === 0 ? <TableRow><TableCell colSpan={6}>No hay datos disponibles</TableCell></TableRow> : data.map((row) => (
+          {result.length === 0 ? <TableRow><TableCell colSpan={6}>No hay datos disponibles</TableCell></TableRow> : result.map((row) => (
             <TableRow
               key={row.idsolicitudes}
               sx={{   border: 2  }}

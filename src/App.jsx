@@ -91,6 +91,7 @@ const App = () => {
      <BrowserRouter>      
       <Nav /> 
      <Routes>
+     <Route path='/portafolio-front' element={<Navigate to={'/perfil'}/>}></Route>
       <Route path='/' element={<Navigate to={'/perfil'}/>}></Route>
       <Route path='/perfil' element={
         <Grid container spacing={2}>
