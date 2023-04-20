@@ -91,7 +91,7 @@ const Login = ({getDataAllowed})=>{
         setShowAlert(true)
         timeOutAlert()
     }else{
-       axios.post('http://localhost:3001/login', {
+       axios.post('https://portafolio-back-production-10.up.railway.app/login', {
         idlogin: idlogin,
         user: user,
         password: password
