@@ -71,7 +71,7 @@ const Contacto = ({
           setAlertContact(true)
           timeContactAlert()
        }else { 
-        axios.post('https://portafolio-back-production-10.up.railway.app/contacto/crear-solicitud',{
+        axios.post('http://localhost:3001/contacto/crear-solicitud',{
         nombre:nombre,
         correo:correo,
         telefono:telefono,
