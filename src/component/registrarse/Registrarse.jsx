@@ -33,7 +33,7 @@ import axios from 'axios';
         setShowAlert(true)
         timeOutAlert()
       }else{
-       axios.post('http://portafolio-back-production-10.up.railway.app/login/crear-usuario', {
+       axios.post('https://portafolio-back-production-10.up.railway.app/login/crear-usuario', {
         user: user,
         password: password
        }).then((resp)=>{
