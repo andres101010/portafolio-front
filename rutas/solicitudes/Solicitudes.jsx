@@ -24,7 +24,7 @@ const useSolicitudes = () => {
   const [showAlertEliminar, SetshowAlertEliminar] = useState(false);
   const [showAlertErrorEliminar, SetshowAlertErrorEliminar] = useState(false);
   const getData = async ()=>{
-    const resp = await axios.get('https://portafolio-back-production-10.up.railway.app/solicitudes')
+    const resp = await axios.get('http://localhost:3001/solicitudes')
     setData(resp.data)
 };
 
@@ -134,7 +134,7 @@ const Solicitudes = ({
     console.log(obj)
  });
  const update = () => {
-  axios.put(`https://portafolio-back-production-10.up.railway.app/solicitudes/editar-solicitud/${idsolicitudes}`,{
+  axios.put(`http://localhost:3001/solicitudes/editar-solicitud/${idsolicitudes}`,{
     nombre:nombre,
     correo:correo,
     telefono:telefono,
@@ -159,7 +159,7 @@ const Solicitudes = ({
   })
 };
 const eliminar = ((idsolicitudes)=>{
-  axios.delete(`https://portafolio-back-production-10.up.railway.app/solicitudes/eliminar-solicitud/${idsolicitudes}`).then(()=>{
+  axios.delete(`http://localhost:3001/solicitudes/eliminar-solicitud/${idsolicitudes}`).then(()=>{
     setIdSolicitudes("")
     setNombre("")
     setCorreo("")
