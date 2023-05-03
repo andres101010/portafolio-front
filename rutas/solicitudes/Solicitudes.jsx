@@ -6,89 +6,24 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import axios from "axios";
-import { useState,useEffect } from "react";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import Alert from '@mui/material/Alert';
-
-
-
-const useSolicitudes = () => {
-  const [data, setData] = useState([]);
-  const [serch, setSerch] = useState("");
-  const [showTable, SetshowTable] = useState(true);
-  const [showForm, Setshowform] = useState(false);
-  const [showAlertSolicitud, SetshowAlertSolicitud] = useState(false);
-  const [showAlertErrorSolicitud, SetshowAlertErrorSolicitud] = useState(false);
-  const [showAlertEliminar, SetshowAlertEliminar] = useState(false);
-  const [showAlertErrorEliminar, SetshowAlertErrorEliminar] = useState(false);
-  const getData = async ()=>{
-    const resp = await axios.get('http://localhost:3001/solicitudes')
-    setData(resp.data)
-};
-
-const showModificacion = () => {
-  Setshowform(true)
-  SetshowTable(false)
-};
-
-const cancelar = () => {
-  Setshowform(false)
-  SetshowTable(true)
-};
-
-const timeAlertShowSolicitud = () => {
-   setTimeout(()=>{
-     SetshowAlertSolicitud(false)
-     SetshowAlertEliminar(false)
-   },3000)
-}
-const timeAlertShowSolicitudError = () => {
-   setTimeout(()=>{
-     SetshowAlertErrorSolicitud(false)
-     SetshowAlertErrorEliminar(false)
-   },3000)
-}
-console.log(serch)
-useEffect(()=>{
-   getData()
-},[]);
-
-const result = !serch ? data : data.filter((datos)=> datos.nombre.toLocaleLowerCase().includes(serch.toLocaleLowerCase()));
-
-return{
-  data,
-  showTable,
-  SetshowTable,
-  showForm,
-  Setshowform,
-  showModificacion,
-  cancelar,
-  showAlertSolicitud,
-  SetshowAlertSolicitud,
-  showAlertErrorSolicitud,
-  SetshowAlertErrorSolicitud,
-  timeAlertShowSolicitud,
-  timeAlertShowSolicitudError,
-  getData,
-  showAlertEliminar,
-  SetshowAlertEliminar,
-  showAlertErrorEliminar,
-  SetshowAlertErrorEliminar,
-  setSerch,
-  result
-}
-};
-
-const Solicitudes = ({
+import { useSolicitudes } from "../../src/component/hook/useSolicitudes";
+import { useGlobalState } from "../../src/component/hook/UseglobalState";
+import { sendUpdate } from "../../src/component/services/ContactServices";
+import { sendDelete } from "../../src/component/services/ContactServices";
+const Solicitudes = ({})=>{
+ //************************************************************* */
+  
+ const {
   nombre,
   setNombre,
   correo,
   setCorreo,
   telefono,
   setTelefono,
-  Solicitud,
+  solicitud,
   setSolicitud,
   comentario,
   setComentario,
@@ -99,10 +34,9 @@ const Solicitudes = ({
   changeComentario,
   idsolicitudes,
   setIdSolicitudes,
-})=>{
- //************************************************************* */
+ } = useGlobalState();
+
   const {
-    data,
     showForm,
     Setshowform,
     showTable,
@@ -115,13 +49,13 @@ const Solicitudes = ({
     SetshowAlertErrorSolicitud,
     timeAlertShowSolicitud,
     timeAlertShowSolicitudError,
-    getData,
     SetshowAlertErrorEliminar,
     showAlertErrorEliminar,
     SetshowAlertEliminar,
     showAlertEliminar,
     setSerch,
-    result
+    result,
+    cargarSolicitudes
   } = useSolicitudes();
 
   const edit = ((obj)=>{
@@ -133,48 +67,38 @@ const Solicitudes = ({
     setComentario(obj.comentario)
     console.log(obj)
  });
- const update = () => {
-  axios.put(`http://localhost:3001/solicitudes/editar-solicitud/${idsolicitudes}`,{
-    nombre:nombre,
-    correo:correo,
-    telefono:telefono,
-    solicitud:Solicitud,
-    comentario:comentario
-  }).then(()=>{
-    setIdSolicitudes("")
-    setNombre("")
-    setCorreo("")
-    setTelefono("")
-    setSolicitud("")
-    setComentario("")
-    getData()
+ const update = async () => {
+  try {
+    const contact = {nombre,correo,telefono,solicitud,comentario}
+    const result = await sendUpdate(contact, idsolicitudes)
+    console.log(result)
+    cargarSolicitudes()
     SetshowTable(true)
     Setshowform(false)
     SetshowAlertSolicitud(true)
     timeAlertShowSolicitud()
-  }).catch((error)=>{
+  } catch (error) {
     SetshowAlertErrorSolicitud(true)
     timeAlertShowSolicitudError()
     console.log(error)
-  })
+    new Error('No se pudo editar.. :(')
+  }
 };
-const eliminar = ((idsolicitudes)=>{
-  axios.delete(`http://localhost:3001/solicitudes/eliminar-solicitud/${idsolicitudes}`).then(()=>{
-    setIdSolicitudes("")
-    setNombre("")
-    setCorreo("")
-    setTelefono("")
-    setSolicitud("")
-    setComentario("")
-    getData()
-    SetshowAlertEliminar(true)
-    timeAlertShowSolicitud()
-  }).catch((err)=>{
-    console.log(err)
-    SetshowAlertErrorEliminar(true)
-    timeAlertShowSolicitudError()
-  })
- });
+
+  const eliminar = async (idsolicitudes) => {
+    try {
+      const contact = {nombre,correo,telefono,solicitud,comentario}
+      const resp = await sendDelete(contact, idsolicitudes)
+      console.log(resp)
+      cargarSolicitudes()
+      SetshowAlertEliminar(true)
+      timeAlertShowSolicitud()
+    } catch (error) {
+      console.log(err)
+      SetshowAlertErrorEliminar(true)
+      timeAlertShowSolicitudError()
+    }
+  };
 
     return(
         <Grid container>
@@ -255,7 +179,7 @@ const eliminar = ((idsolicitudes)=>{
                        <FormLabel  style={{color:'white', fontSize:'20px'}}>Telefono</FormLabel>
                        <TextField id="outlined-basic" label="Telefono" value={telefono} variant="filled" size="normal"  onChange={changeTelefono}/>
                        <FormLabel  style={{color:'white', fontSize:'20px'}}>Solicitud</FormLabel>
-                       <TextField id="outlined-basic" label="Solicitud" value={Solicitud} variant="filled" size="normal"  onChange={changeSolicitud}/>
+                       <TextField id="outlined-basic" label="Solicitud" value={solicitud} variant="filled" size="normal"  onChange={changeSolicitud}/>
                        <FormLabel  style={{color:'white', fontSize:'20px'}}>Comentario</FormLabel>
                        <Textarea id="outlined-basic" label="Ingresa tu Comentario" value={comentario}  variant="soft" style={{ width:300, height:90}}  onChange={changeComentario}/>
                        </FormControl><br />

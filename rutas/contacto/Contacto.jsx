@@ -4,90 +4,52 @@ import Textarea from '@mui/joy/Textarea';
 import MailIcon from '@mui/icons-material/Mail';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
-import axios from "axios";
+import { useContact } from "../../src/component/hook/useContact";
+import { useGlobalState } from "../../src/component/hook/UseglobalState";
+import { sendSolicitud } from "../../src/component/services/ContactServices"; 
 import Alert from '@mui/material/Alert';
 import './Contacto.css'
-const useContact = () => {
-    const [alertContact, setAlertContact] = useState(false);
-    const [alertContactSuccess, setAlertContactSuccess] = useState(false);
-   
 
-    const timeContactAlert = () => {
-      setTimeout(()=>{
-        setAlertContact(false)
-      }, 2000)
-    };
-    const timeContactAlertSuccess = () => {
-      setTimeout(()=>{
-        setAlertContactSuccess(false)
-      }, 4000)
-    };
-
-  
-        return { alertContact,
-                 setAlertContact,
-                 alertContactSuccess,
-                 setAlertContactSuccess,
-                 timeContactAlert,
-                 timeContactAlertSuccess,
-                 
-        }
-}
-const Contacto = ({
-  nombre,
-  setNombre,
-  correo,
-  setCorreo,
-  telefono,
-  setTelefono,
-  Solicitud,
-  setSolicitud,
-  comentario,
-  setComentario,
-  changeNombre,
-  changeCorreo,
-  changeTelefono,
-  changeSolicitud,
-  changeComentario,
-})=>{
+const Contacto = ()=>{
   const { 
     alertContact,
     alertContactSuccess,
-    setAlertContact,
+     setAlertContact,
     setAlertContactSuccess,
     timeContactAlert,
     timeContactAlertSuccess,
     
   } = useContact();
   
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if(nombre === "" ||
-       correo === "" ||
-       telefono === "" ||
-       Solicitud === "" ||
-       comentario === ""){
-          setAlertContact(true)
-          timeContactAlert()
-       }else { 
-        axios.post('http://localhost:3001/contacto/crear-solicitud',{
-        nombre:nombre,
-        correo:correo,
-        telefono:telefono,
-        solicitud: Solicitud,
-        comentario: comentario
-       }).then((resp)=>{
-          setNombre("")
-          setCorreo("")
-          setTelefono("")
-          setSolicitud("")
-          setComentario("")
-          setAlertContactSuccess(true)
-          timeContactAlertSuccess()
-       })
-      }
-    }
+  const {
+    nombre,
+    changeNombre,
+    correo,
+    changeCorreo,
+    telefono,
+    changeTelefono,
+    solicitud,
+    changeSolicitud,
+    comentario,
+    changeComentario,} = useGlobalState();
+
+  const handleSubmit = async (event) => {
+      event.preventDefault();
+      if(nombre ===    "" ||
+         correo ===    "" ||
+         telefono ===  "" ||
+         solicitud === "" ||
+         comentario === ""){
+            setAlertContact(true)
+            timeContactAlert()
+         }else { 
+          const  contact = {nombre,correo,telefono,solicitud,comentario}
+          const  datos = await sendSolicitud( contact)
+           setAlertContactSuccess(true)
+           timeContactAlertSuccess()
+         }
+    };
+
     return(
         <Grid container>
             <Grid item md={12} xs={12} textAlign={'center'} style={{color:'green'}}>
