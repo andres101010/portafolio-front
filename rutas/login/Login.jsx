@@ -7,63 +7,13 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import login2 from '/src/assets/img/login2.png';
 import './Login.css';
-import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import  Registrarse  from '../../src/component/registrarse/Registrarse';
 import Alert from '@mui/material/Alert';
-import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import { useLogin } from '../../src/component/hook/useLogin';
+import { sendLogin } from '../../src/component/services/ContactServices';
 
-
-const useLogin = () => {
-  const [idlogin, setIdlogin] = useState('')
-  const [user, setUser] = useState('');
-  const [password, setPassword] = useState('');
-  const [showRegister, setShowRegister] = useState(false);
-  const [showLogin, setShowLogin] = useState(true);
-  const [showAlert, setShowAlert] = useState(false);
-  const [showAlertValidationError, setShowAlertValidationError] = useState(false);
- 
-  const onChangeUser = (event) => { setUser(event.target.value)} 
-  const onChangePassword = (event) => { setPassword(event.target.value)} 
- 
-  const register = ()=>{
-    setShowLogin(false)
-    setShowRegister(true)
-  }
-
-  const timeOutAlert = () => {
-    setTimeout(()=>{
-      setShowAlert(false)
-    }, 4000)
-  }
-
-  const timeOutAlertValidation = () => {
-    setTimeout(()=>{
-      setShowAlertValidationError(false)
-    }, 4000)
-  };
- 
-  return {
-    idlogin,
-    user,
-    password,
-    showRegister,
-    setShowRegister,
-    showLogin,
-    setShowLogin,
-    showAlert,
-    setShowAlert,
-    showAlertValidationError,
-    onChangeUser,
-    onChangePassword,
-    register,
-    timeOutAlert,
-    timeOutAlertValidation,
-    setShowAlertValidationError
-   
-  }
-}
 const Login = ({getDataAllowed})=>{
 
   const { idlogin,
@@ -81,33 +31,31 @@ const Login = ({getDataAllowed})=>{
           register,
           timeOutAlert,
           timeOutAlertValidation,      
-          setShowAlertValidationError
-         
+          setShowAlertValidationError     
          } = useLogin()
  
 
-  const inicioSesion = () =>{
-    if(user === "" || password === ""){
-        setShowAlert(true)
-        timeOutAlert()
-    }else{
-       axios.post('http://localhost:3001/login', {
-        idlogin: idlogin,
-        user: user,
-        password: password
-       }).then((res)=>{
-         getDataAllowed(res.data)
+  const inicioSesion = async () =>{
+     try {
+       if(user === "" || password === "" ){
+         setShowAlert(true)
+         timeOutAlert()
+       }else{
+         const dataUser = {user, password}
+         const datos = await sendLogin(dataUser)
+         getDataAllowed(datos)
+         console.log(datos)
          navigate('/solicitudes')
          setShowLogin(false) 
-       }).catch((err)=>{
-         console.log(err)
-        setShowAlertValidationError(true)
-        timeOutAlertValidation()
-       })
-    }
+       }
+     } catch (error) {
+      console.log(error)
+       setShowAlertValidationError(true)
+       timeOutAlertValidation()  
+     }
   }
 
-   const navigate = useNavigate()
+  const navigate = useNavigate()
   
     return(
         <Grid container spacing={2} > 

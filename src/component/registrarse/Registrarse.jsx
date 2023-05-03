@@ -9,8 +9,7 @@ import Register from '/src/assets/img/register.png';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import { useState } from 'react';
-import axios from 'axios';
-
+import { register } from '../services/ContactServices';
 
 
  const Registrarse = ({
@@ -27,34 +26,35 @@ import axios from 'axios';
  
     const[showCard, setShowCard] = useState (true);
    
-    const sendRegister = (e) =>{
-      e.preventDefault()
-      if(user === "" || password === ""){
-        setShowAlert(true)
-        timeOutAlert()
-      }else{
-       axios.post('http://localhost:3001/login/crear-usuario', {
-        user: user,
-        password: password
-       }).then((resp)=>{
-         setShowCard(false)
-         time()
-       }).catch((err)=>{
-        console.log(err)
-       })
+    const sendRegister = async (e) =>{
+      try {
+        e.preventDefault()
+        if(user === "" || password === ""){
+          setShowAlert(true)
+          timeOutAlert()
+        }else{
+          const dataUser = {user,password}
+          const data = await register(dataUser)
+          console.log(data)
+          setShowCard(false)
+          time()
+        } 
+      } catch (error) {
+        console.log(error)
+        new Error("No se pudo hacer el registro :(")
       }
-    }
+    };
     const regresar = ()=>{
        setShowLogin(true)
        setShowRegister(false)
-    }
+    };
     const time = ()=>{
       setTimeout(()=>{
         setShowCard(true)
         setShowLogin(true)
         setShowRegister(false)
       },5000)
-    }
+    };
   return (
     <Grid container spacing={2}>
 
