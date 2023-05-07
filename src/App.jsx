@@ -16,7 +16,7 @@ import Logaut from './component/logaut/Logaut';
 import NotFound from '../rutas/notFound/NotFound';
 import { useGlobalState } from './component/hook/UseglobalState';
 
-// Aqui comienza el omponente app.js**************
+// Aqui comienza el componente app.js**************
 const App = () => {
     const { getDataAllowed,
             isAllowed,

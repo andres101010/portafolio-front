@@ -5,7 +5,7 @@ import './Title.css';
 
 
 const array = [
-    {palabra:'Developer Front-End'},
+    {palabra:'Developer Full-Stack'},
  ];
 
 
@@ -23,7 +23,7 @@ const Title = () => {
                  {
                     array.map((element) =>(
                         <Grid item ml={2}  xs={12} md={12} key={element.palabra} >
-                            <Typography className='animated-header' variant='h2' >{element.palabra}</Typography>
+                            <Typography className='animated-header' variant='h2' style={{letterSpacing:'2px'}} >{element.palabra}</Typography>
                         </Grid>
                     ))
                  }
