@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 
 const Footer = ()=>{
     return(
-        <Grid container>
+        <Grid container mt={5}>
             <Grid item>
                 <NavLink style={{color:'gray'}} to={'https://www.facebook.com/andres.morales.144181/'} target='_blank'><FacebookIcon fontSize="large" rel="noopener noreferrer" /></NavLink>
             </Grid>

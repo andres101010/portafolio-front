@@ -14,7 +14,7 @@ import consultora from '/src/assets/img/consultora.png'
 import { NavLink } from "react-router-dom";
 const Proyecto = ()=>{
     return(
-        <Grid container m={"auto"}>
+        <Grid container m={"auto"} >
             <Grid item md={12} xs={12} color={'green'} textAlign={'center'} mb={'10px'}>
             <Typography variant="h2">Proyectos</Typography>
             </Grid>
@@ -37,7 +37,7 @@ const Proyecto = ()=>{
         </Typography>
        </CardContent >
       <CardActions style={{backgroundColor:'black', color:'white'}}>
-         Link del codigo en GitHub:            
+         Link:            
         <NavLink to={'https://github.com/andres101010/crud-react-front'} target="_blank" style={{textDecoration:'none', marginLeft:"55px"}} >Crud React</NavLink>
       </CardActions>
     </Card>
@@ -59,7 +59,7 @@ const Proyecto = ()=>{
         </Typography>
        </CardContent >
       <CardActions style={{backgroundColor:'black', color:'white'}}>
-      Link del codigo en GitHub:            
+      Link:            
         <NavLink to={'https://github.com/andres101010/marketplace-front'} target="_blank" style={{textDecoration:'none',marginLeft:"65px"}} > Ecommer</NavLink>
       </CardActions>
     </Card>
@@ -81,7 +81,7 @@ const Proyecto = ()=>{
         </Typography>
        </CardContent>
       <CardActions style={{backgroundColor:'black', color:'white'}}>
-      Link del codigo en GitHub:
+      Link:
       <NavLink to={'https://github.com/andres101010/challenge7'} target="_blank" style={{textDecoration:'none', marginLeft:"95px"}} >Login</NavLink>
       </CardActions>
     </Card>
@@ -145,7 +145,7 @@ const Proyecto = ()=>{
         </Typography>
        </CardContent>
       <CardActions style={{backgroundColor:'black', color:'white'}}>
-      Link de la pagina:
+      Link :
       <NavLink to={'https://andres101010.github.io/consultora/'} target="_blank" style={{textDecoration:'none', marginLeft:"120px"}}>Consultora</NavLink>
       </CardActions>
     </Card>

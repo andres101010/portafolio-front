@@ -34,8 +34,9 @@ const Solicitudes = ({})=>{
   changeComentario,
   idsolicitudes,
   setIdSolicitudes,
+  isAllowed
  } = useGlobalState();
-
+console.log(isAllowed)
   const {
     showForm,
     Setshowform,

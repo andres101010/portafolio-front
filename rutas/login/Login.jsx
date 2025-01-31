@@ -31,7 +31,8 @@ const Login = ({getDataAllowed})=>{
           register,
           timeOutAlert,
           timeOutAlertValidation,      
-          setShowAlertValidationError     
+          setShowAlertValidationError,
+          isAllowed   
          } = useLogin()
  
 
@@ -45,6 +46,7 @@ const Login = ({getDataAllowed})=>{
          const datos = await sendLogin(dataUser)
          getDataAllowed(datos)
          console.log(datos)
+         console.log(isAllowed)
          navigate('/solicitudes')
          setShowLogin(false) 
        }

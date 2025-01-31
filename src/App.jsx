@@ -22,7 +22,7 @@ const App = () => {
             isAllowed,
             setIsallowed,
             } = useGlobalState()
-   
+   console.log(isAllowed)
   return (
     <Container maxWidth="x1">
      <BrowserRouter>      
@@ -43,9 +43,9 @@ const App = () => {
       </Route>
         <Route path='/proyectos' element={<Proyecto />}></Route>
         <Route path='/contacto' element={<Contacto />}></Route>
-        <Route element={ <ProtectedRoute isAllowed={isAllowed} />}>
+        {/* <Route element={ <ProtectedRoute isAllowed={isAllowed} />}> */}
           <Route path='/solicitudes' element={<Solicitudes />}></Route>
-        </Route>
+        {/* </Route> */}
         <Route path='/login' element={<Login getDataAllowed={getDataAllowed} isAllowed={isAllowed} setIsallowed={setIsallowed}/>}></Route>
         <Route path='*' element={<NotFound/>}></Route>
      </Routes>

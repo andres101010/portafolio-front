@@ -10,6 +10,10 @@ import express from '/src/assets/img/express.png'
 import mysql from '/src/assets/img/mysql.jpg'
 import git from '/src/assets/img/GitHub.png'
 import andres from '/src/assets/img/andresFondo.png'
+import mongo from '/src/assets/img/mongo.png'
+import postgress from '/src/assets/img/postgress.png'
+import sequelize from '/src/assets/img/sequelize.png'
+import react from '/src/assets/img/react.png'
 import './Imagen.css'
 import { Grid,  CardActionArea } from '@mui/material'
 import Card from '@mui/material/Card';
@@ -20,15 +24,19 @@ const useImagen = () => {
   const [showImg, setShowImg] = useState(false)
   
   const imagenes = [
-    {id:1,img: html},
-    {id:2,img: css},
-    {id:3,img: js},
-    {id:4,img: bs},
-    {id:5,img: mu},
-    {id:6,img: node},
-    {id:7,img: express},
-    {id:8,img: mysql},
-    {id:9,img: git},
+    {id:1,img: html, name: 'Html'},
+    {id:2,img: css, name: 'Css'},
+    {id:3,img: js, name: 'JavaScript'},
+    {id:4,img: bs, name: 'Bootstrap'},
+    {id:5,img: mu, name: 'Material UI'},
+    {id:6,img: node, name: 'Node.js'},
+    {id:7,img: express, name: 'Express.js'},
+    {id:8,img: mysql, name: 'MySql'},
+    {id:9,img: git, name: 'GitHub'},
+    {id:10,img: react, name: 'React.js'},
+    {id:11,img: mongo, name: 'Mongo'},
+    {id:12,img: sequelize, name: 'Sequelize'},
+    {id:13,img: postgress, name: 'Postgress'},
     
   ]
 
@@ -69,8 +77,10 @@ const Imagen = () => {
          <Typography gutterBottom variant="h5" component="div" color={'green'}>
            Sobre mi!
          </Typography>
-         <Typography variant="body1" color="text.secondary">
-         Soy un desarrollador web front-end con experiencia en HTML, CSS, JavaScript y React. Me apasiona crear sitios web eficaces y atractivos que mejoren la experiencia del usuario.
+         <Typography variant="body1" color="text.secondary" style={{fontWeight:'bold'}}>
+         Soy un Desarrollador Web Full Stack con varios años de experiencia en el desarrollo, mantenimiento y optimización de aplicaciones web. A lo largo de mi carrera, he trabajado en entornos dinámicos, enfrentando desafíos tanto en frontend como en backend, lo que me ha permitido desarrollar una visión integral del desarrollo de software.
+
+Mi trayectoria incluye experiencia en empresas tecnológicas, proyectos colaborativos y aprendizaje autodidacta. He trabajado en sistemas complejos, como plataformas de apuestas deportivas, donde he mejorado funcionalidades existentes, optimizado procesos y desarrollado nuevas características para mejorar el rendimiento y la experiencia del usuario.
          </Typography>
        </CardContent>
        </CardActionArea>
@@ -81,11 +91,22 @@ const Imagen = () => {
 
           {
             showImg &&
-           imagenes.map((item)=>( 
-              <img src={item.img} key={item.id} alt="imagen" style={{margin:'5px'}}/>
-           ))
+          //  imagenes.map((item,i)=>( 
+          //   <div key={i} style={{display: "flex", alignItems: "center", gap: "10px"}}>
+          //     <p>{item.name}</p>
+          //     <img src={item.img} key={item.id} alt="imagen" style={{margin:'5px'}}/>
+          //   </div>
+          //  ))
+          <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
+            {imagenes.map((item, i) => (
+              <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <p style={{color:'green'}}>{item.name}</p>
+                <img src={item.img} alt="imagen" style={{ margin: "5px" }} />
+              </div>
+            ))}
+          </div>
           }
-         <ul style={{color:"green", fontSize:'20px'}}>
+         {/* <ul style={{color:"green", fontSize:'20px'}}>
           <li>Html</li>
           <li>Css</li>
           <li>JavaScript</li>
@@ -95,7 +116,11 @@ const Imagen = () => {
           <li>Express.js</li>
           <li>MySql</li>
           <li>GitHub</li>
-         </ul>
+          <li>React</li>
+          <li>Mongo</li>
+          <li>Postgress</li>
+          <li>Sequelize</li>
+         </ul> */}
             </Grid> 
        
           </Grid>

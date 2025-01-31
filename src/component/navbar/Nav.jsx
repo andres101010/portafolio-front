@@ -70,7 +70,7 @@ const useNav = () => {
          isHovered
   } = useNav();
   const style = {
-    color : isHovered ? "orange" : "black",
+    color : isHovered ? "orange" : "green",
     fontWeight:'bold',
     textDecoration:'none',
     fontFamily:'sans-serif',
@@ -95,7 +95,7 @@ const useNav = () => {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'black',
+              color: 'green',
               textDecoration: 'none',
             }}
           >
@@ -109,7 +109,7 @@ const useNav = () => {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              color="green"
             >
               
               <MenuIcon  />
@@ -136,7 +136,7 @@ const useNav = () => {
                <NavLink to="/proyectos"  style={{color:'black', fontWeight:'bold', textDecoration:'none', fontFamily:'sans-serif',fontSize:'20px'}}>  Proyectos </NavLink><br />
                <NavLink to="/contacto"  style={{color:'black', fontWeight:'bold', textDecoration:'none',fontFamily:'sans-serif',fontSize:'20px'}}> Contacto </NavLink><br />
                <NavLink to="/solicitudes"  style={{color:'black', fontWeight:'bold', textDecoration:'none',fontFamily:'sans-serif',fontSize:'20px'}}> Solicitudes </NavLink><br />
-               <NavLink to="/login"  style={{color:'black', fontWeight:'bold', textDecoration:'none',fontFamily:'sans-serif',fontSize:'20px'}}> Iniciar sesion </NavLink>
+               {/* <NavLink to="/login"  style={{color:'black', fontWeight:'bold', textDecoration:'none',fontFamily:'sans-serif',fontSize:'20px'}}> Iniciar sesion </NavLink> */}
             </Menu>
           </Box>
           
@@ -152,7 +152,7 @@ const useNav = () => {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: 'green',
               textDecoration: 'none',
             }}
           >
@@ -163,7 +163,7 @@ const useNav = () => {
           <NavLink to="/proyectos"  style={style} onMouseEnter={ handleMouseEnter} onMouseLeave={handleMouseLeave}>  Proyectos </NavLink><br />
           <NavLink to="/contacto"  style={style} onMouseEnter={ handleMouseEnter} onMouseLeave={handleMouseLeave}> Contacto </NavLink><br />
           <NavLink to="/solicitudes"  style={style} onMouseEnter={ handleMouseEnter} onMouseLeave={handleMouseLeave}> Solicitudes </NavLink><br />
-          <NavLink to="/login"  style={style} onMouseEnter={ handleMouseEnter} onMouseLeave={handleMouseLeave}> Iniciar sesion </NavLink>
+          {/* <NavLink to="/login"  style={style} onMouseEnter={ handleMouseEnter} onMouseLeave={handleMouseLeave}> Iniciar sesion </NavLink> */}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
