@@ -11,25 +11,35 @@ import loginImg from '/src/assets/img/login.png'
 import pPt from '/src/assets/img/piedra-papel-tijeras.png'
 import tenis from '/src/assets/img/tenis.png'
 import consultora from '/src/assets/img/consultora.png'
-// import mercado1 from '/src/assets/img/mercados1.jpg'
-// import mercado2 from '/src/assets/img/mercados2.jpg'
+import mercado1 from '/src/assets/img/mercados1.jpg'
+import mercado2 from '/src/assets/img/mercados2.jpg'
+import mercado3 from '/src/assets/img/mercados3.jpg'
+import mercado4 from '/src/assets/img/mercados4.jpg'
+import mercado5 from '/src/assets/img/mercados5.jpg'
+import mercado6 from '/src/assets/img/mercados6.jpg'
+import mercado7 from '/src/assets/img/mercados7.jpg'
+
+import location1 from '/src/assets/img/location1.png'
+import location2 from '/src/assets/img/location2.png'
+import location3 from '/src/assets/img/location3.png'
+
 
 import { NavLink } from "react-router-dom";
 const Proyecto = ()=>{
 
   const images = [
-    { src: '/src/assets/img/mercados1.jpg', title: 'Mercado 1' },
-    { src: '/src/assets/img/mercados2.jpg', title: 'Mercado 2' },
-    { src: '/src/assets/img/mercados3.jpg', title: 'Mercado 3' },
-    { src: '/src/assets/img/mercados4.jpg', title: 'Mercado 4' },
-    { src: '/src/assets/img/mercados5.jpg', title: 'Mercado 5' },
-    { src: '/src/assets/img/mercados6.jpg', title: 'Mercado 6' },
-    { src: '/src/assets/img/mercados7.jpg', title: 'Mercado 7' }
-  ];
+    { src: mercado1, title: 'Mercado 1' }, // ✅ Correcto
+    { src: mercado2, title: 'Mercado 2' },
+    { src: mercado3, title: 'Mercado 3' },
+    { src: mercado4, title: 'Mercado 4' },
+    { src: mercado5, title: 'Mercado 5' },
+    { src: mercado6, title: 'Mercado 6' },
+    { src: mercado7, title: 'Mercado 7' }
+];
   const images2 = [
-    { src: '/src/assets/img/location1.png', title: 'location 1' },
-    { src: '/src/assets/img/location2.png', title: 'location 2' },
-    { src: '/src/assets/img/location3.png', title: 'location 3' },
+    { src: location1, title: 'location 1' },
+    { src: location2, title: 'location 2' },
+    { src: location3, title: 'location 3' },
     
   ];
     return(
