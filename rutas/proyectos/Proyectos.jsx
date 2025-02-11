@@ -188,13 +188,14 @@ const Proyecto = ()=>{
 
      {/* carrusel */}
 
-     <Grid item md={7} m={'auto'} mb={'5px'} className="itemProyect">
-      <Card sx={{ width: 800 }} className="itemProyect">
+     <Grid item md={7}  m={'auto'} mb={'5px'} className="itemProyect">
+      <Card sx={{ width: 800 }}  className="itemProyect">
 
         {/* 🖼 Carousel con imágenes */}
-        <Carousel>
+        <Carousel className='carousel'>
           {images.map((img, index) => (
             <CardMedia
+            className='cardMedia'
               key={index}
               sx={{ height: 390, width: 'auto' }}
               image={img.src}
@@ -244,9 +245,10 @@ const Proyecto = ()=>{
       <Card sx={{ width: 800 }} className="itemProyect">
 
         {/* 🖼 Carousel con imágenes */}
-        <Carousel>
+        <Carousel className='carousel'>
           {images2.map((img, index) => (
             <CardMedia
+              className='cardMedia'
               key={index}
               sx={{ height: 390, width: 'auto' }}
               image={img.src}
