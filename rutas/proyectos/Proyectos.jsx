@@ -25,7 +25,14 @@ import location3 from '/src/assets/img/location3.png'
 
 
 import { NavLink } from "react-router-dom";
+import useProyect from '../../src/component/hook/useProyect';
 const Proyecto = ()=>{
+
+  const {
+    handleShow,
+    showInicial,
+    showAdvance,
+  } = useProyect();
 
   const images = [
     { src: mercado1, title: 'Mercado 1' }, // ✅ Correcto
@@ -43,152 +50,161 @@ const Proyecto = ()=>{
     
   ];
     return(
-        <Grid container m={"auto"} >
+        <Grid container m={"auto"} alignItems="center" justifyContent="center" style={{ minHeight: "80vh" }}>
             <Grid item md={12} xs={12} color={'green'} textAlign={'center'} mb={'10px'}>
             <Typography variant="h2">Proyectos Iniciales</Typography>
+            <button class="btn-elegante" onClick={()=>handleShow('inicial')}>Ver</button>
             </Grid>
 
-    <Grid item md={4} m={'auto'} mb={'5px'} className="itemProyect">
-     <Card sx={{ width: 345  }} className="itemProyect">
-        <CardMedia
-        sx={{ height: 200, width:"auto" }}
-        image={crudReact}
-        title="Crud"
-        
-      />
-       <CardContent style={{backgroundColor:'black', color:'white'}}>
-        <Typography gutterBottom variant="h5" component="div">
-          Crud hecho con React.js
-        </Typography>
-        <Typography variant="body2" color="white">
-          Tecnologias usadas: React.js, BootsTrap y por el backend
-          Node.js, Express.js, MySql Workbench. 
-        </Typography>
-       </CardContent >
-      <CardActions style={{backgroundColor:'black', color:'white'}}>
-         Link:            
-        <NavLink to={'https://github.com/andres101010/crud-react-front'} target="_blank" style={{textDecoration:'none', marginLeft:"55px"}} >Crud React</NavLink>
-      </CardActions>
-    </Card>
-     </Grid>
-    <Grid item md={4} m={'auto'} mb={'5px'}  className="itemProyect">
-     <Card sx={{ width: 345 }}  className="itemProyect">
-        <CardMedia
-        sx={{ height: 195 }}
-        image={ecommer1}
-        title="Ecommer"
-      />
-       <CardContent style={{backgroundColor:'black',color:'white', paddingBottom:'1px'}} >
-        <Typography gutterBottom variant="h5" component="div">
-          Ecommer
-        </Typography>
-        <Typography variant="body2" color="white">
-          Tecnologias usadas: React.js , Protecte Router, Material UI y por el backend
-          Node.js, Express.js, MySql Workbench. 
-        </Typography>
-       </CardContent >
-      <CardActions style={{backgroundColor:'black', color:'white'}}>
-      Link:            
-        <NavLink to={'https://github.com/andres101010/marketplace-front'} target="_blank" style={{textDecoration:'none',marginLeft:"65px"}} > Ecommer</NavLink>
-      </CardActions>
-    </Card>
-     </Grid>
-    <Grid item md={4} m={'auto'} mb={'5px'}  className="itemProyect">
-     <Card sx={{ width: 345 }}  className="itemProyect">
-        <CardMedia
-        sx={{ height: 200 }}
-        image={loginImg}
-        title="Login"
-      />
-       <CardContent style={{backgroundColor:'black', color:'white', paddingBottom:'1px'}}>
-        <Typography gutterBottom variant="h5" component="div">
-          Login
-        </Typography>
-        <Typography variant="body2" color="white">
-           Tecnologias usadas: React.js, Protected Router, BoostsTrap y por el backend
-           Node.js, Exprees.js, MySql Workbench 
-        </Typography>
-       </CardContent>
-      <CardActions style={{backgroundColor:'black', color:'white'}}>
-      Link:
-      <NavLink to={'https://github.com/andres101010/challenge7'} target="_blank" style={{textDecoration:'none', marginLeft:"95px"}} >Login</NavLink>
-      </CardActions>
-    </Card>
-     </Grid>
-    <Grid item md={4} m={'auto'} mb={'5px'}  className="itemProyect">
-     <Card sx={{ width: 345 }}  className="itemProyect">
-        <CardMedia
-        sx={{ height: 200 }}
-        image={pPt}
-        title="piedra-papel-tijeras"
-      />
-       <CardContent style={{backgroundColor:'black',color:'white', paddingBottom:'1px'}}>
-        <Typography gutterBottom variant="h5" component="div">
-           Piedra, Papel, Tijeras
-        </Typography>
-        <Typography variant="body2" color="white">
-          Juego clasico hecho con: React.js, logica JavaScript, Css
-        </Typography>
-       </CardContent>
-      <CardActions style={{backgroundColor:'black', color:'white'}}>
-      Link del codigo en GitHub:
-      <NavLink to={'https://github.com/andres101010/piedra-papel-tijeras'} target="_blank" style={{textDecoration:'none'}} >Piedra,Papel,Tijeras</NavLink>
-      </CardActions>
-    </Card>
-     </Grid>
-    <Grid item md={4} m={'auto'} mb={'5px'}  className="itemProyect">
-     <Card sx={{ width: 345 }} className="itemProyect">
-        <CardMedia
-        sx={{ height: 200 }}
-        image={tenis}
-        title="Club de tenis"
-      />
-       <CardContent style={{backgroundColor:'black', color:'white', paddingBottom:'20px'}}>
-        <Typography gutterBottom variant="h5" component="div">
-          Club de tenis
-        </Typography>
-        <Typography variant="body2" color="white">
-           Pagina estatica hecha con: Html, CSS y backend Node.js, Expreess.js 
-           MySql.
-        </Typography>
-       </CardContent>
-      <CardActions style={{backgroundColor:'black', color:'white'}}>
-      Link del codigo en GitHub:
-      <NavLink to={'https://github.com/andres101010/club-tenis'} target="_blank" style={{textDecoration:'none',marginLeft:"40px"}} >Club de Tenis</NavLink>
-      </CardActions>
-    </Card>
-     </Grid>
-    <Grid item md={4} m={'auto'} mb={'5px'} className="itemProyect">
-     <Card sx={{ width: 345 }}  className="itemProyect">
-        <CardMedia
-        sx={{ height: 200 }}
-        image={consultora}
-        title="consultora"
-      />
-       <CardContent style={{backgroundColor:'black', color:'white', padding:'18px'}}>
-        <Typography gutterBottom variant="h5" component="div">
-          Consultora
-        </Typography>
-        <Typography variant="body2" color="white">
-           Pagina estatica hecha con: React.js, React Router Dom y BootsTrap
-        </Typography>
-       </CardContent>
-      <CardActions style={{backgroundColor:'black', color:'white'}}>
-      Link :
-      <NavLink to={'https://andres101010.github.io/consultora/'} target="_blank" style={{textDecoration:'none', marginLeft:"120px"}}>Consultora</NavLink>
-      </CardActions>
-    </Card>
-     </Grid>
+      {
+        showInicial &&
+
+        <>
+          <Grid item md={4} m={'auto'} mb={'5px'} className="itemProyect">
+          <Card sx={{ width: 345  }} className="itemProyect">
+              <CardMedia
+              sx={{ height: 200, width:"auto" }}
+              image={crudReact}
+              title="Crud"
+              
+            />
+            <CardContent style={{backgroundColor:'black', color:'white'}}>
+              <Typography gutterBottom variant="h5" component="div">
+                Crud hecho con React.js
+              </Typography>
+              <Typography variant="body2" color="white">
+                Tecnologias usadas: React.js, BootsTrap y por el backend
+                Node.js, Express.js, MySql Workbench. 
+              </Typography>
+            </CardContent >
+            <CardActions style={{backgroundColor:'black', color:'white'}}>
+              Link:            
+              <NavLink to={'https://github.com/andres101010/crud-react-front'} target="_blank" style={{textDecoration:'none', marginLeft:"55px"}} >Crud React</NavLink>
+            </CardActions>
+          </Card>
+          </Grid>
+          <Grid item md={4} m={'auto'} mb={'5px'}  className="itemProyect">
+          <Card sx={{ width: 345 }}  className="itemProyect">
+              <CardMedia
+              sx={{ height: 195 }}
+              image={ecommer1}
+              title="Ecommer"
+            />
+            <CardContent style={{backgroundColor:'black',color:'white', paddingBottom:'1px'}} >
+              <Typography gutterBottom variant="h5" component="div">
+                Ecommer
+              </Typography>
+              <Typography variant="body2" color="white">
+                Tecnologias usadas: React.js , Protecte Router, Material UI y por el backend
+                Node.js, Express.js, MySql Workbench. 
+              </Typography>
+            </CardContent >
+            <CardActions style={{backgroundColor:'black', color:'white'}}>
+            Link:            
+              <NavLink to={'https://github.com/andres101010/marketplace-front'} target="_blank" style={{textDecoration:'none',marginLeft:"65px"}} > Ecommer</NavLink>
+            </CardActions>
+          </Card>
+          </Grid>
+          <Grid item md={4} m={'auto'} mb={'5px'}  className="itemProyect">
+          <Card sx={{ width: 345 }}  className="itemProyect">
+              <CardMedia
+              sx={{ height: 200 }}
+              image={loginImg}
+              title="Login"
+            />
+            <CardContent style={{backgroundColor:'black', color:'white', paddingBottom:'1px'}}>
+              <Typography gutterBottom variant="h5" component="div">
+                Login
+              </Typography>
+              <Typography variant="body2" color="white">
+                Tecnologias usadas: React.js, Protected Router, BoostsTrap y por el backend
+                Node.js, Exprees.js, MySql Workbench 
+              </Typography>
+            </CardContent>
+            <CardActions style={{backgroundColor:'black', color:'white'}}>
+            Link:
+            <NavLink to={'https://github.com/andres101010/challenge7'} target="_blank" style={{textDecoration:'none', marginLeft:"95px"}} >Login</NavLink>
+            </CardActions>
+          </Card>
+          </Grid>
+          <Grid item md={4} m={'auto'} mb={'5px'}  className="itemProyect">
+          <Card sx={{ width: 345 }}  className="itemProyect">
+              <CardMedia
+              sx={{ height: 200 }}
+              image={pPt}
+              title="piedra-papel-tijeras"
+            />
+            <CardContent style={{backgroundColor:'black',color:'white', paddingBottom:'1px'}}>
+              <Typography gutterBottom variant="h5" component="div">
+                Piedra, Papel, Tijeras
+              </Typography>
+              <Typography variant="body2" color="white">
+                Juego clasico hecho con: React.js, logica JavaScript, Css
+              </Typography>
+            </CardContent>
+            <CardActions style={{backgroundColor:'black', color:'white'}}>
+            Link del codigo en GitHub:
+            <NavLink to={'https://github.com/andres101010/piedra-papel-tijeras'} target="_blank" style={{textDecoration:'none'}} >Piedra,Papel,Tijeras</NavLink>
+            </CardActions>
+          </Card>
+          </Grid>
+          <Grid item md={4} m={'auto'} mb={'5px'}  className="itemProyect">
+          <Card sx={{ width: 345 }} className="itemProyect">
+              <CardMedia
+              sx={{ height: 200 }}
+              image={tenis}
+              title="Club de tenis"
+            />
+            <CardContent style={{backgroundColor:'black', color:'white', paddingBottom:'20px'}}>
+              <Typography gutterBottom variant="h5" component="div">
+                Club de tenis
+              </Typography>
+              <Typography variant="body2" color="white">
+                Pagina estatica hecha con: Html, CSS y backend Node.js, Expreess.js 
+                MySql.
+              </Typography>
+            </CardContent>
+            <CardActions style={{backgroundColor:'black', color:'white'}}>
+            Link del codigo en GitHub:
+            <NavLink to={'https://github.com/andres101010/club-tenis'} target="_blank" style={{textDecoration:'none',marginLeft:"40px"}} >Club de Tenis</NavLink>
+            </CardActions>
+          </Card>
+          </Grid>
+          <Grid item md={4} m={'auto'} mb={'5px'} className="itemProyect">
+          <Card sx={{ width: 345 }}  className="itemProyect">
+              <CardMedia
+              sx={{ height: 200 }}
+              image={consultora}
+              title="consultora"
+            />
+            <CardContent style={{backgroundColor:'black', color:'white', padding:'18px'}}>
+              <Typography gutterBottom variant="h5" component="div">
+                Consultora
+              </Typography>
+              <Typography variant="body2" color="white">
+                Pagina estatica hecha con: React.js, React Router Dom y BootsTrap
+              </Typography>
+            </CardContent>
+            <CardActions style={{backgroundColor:'black', color:'white'}}>
+            Link :
+            <NavLink to={'https://andres101010.github.io/consultora/'} target="_blank" style={{textDecoration:'none', marginLeft:"120px"}}>Consultora</NavLink>
+            </CardActions>
+          </Card>
+          </Grid>
+        </>
+      }
 
      {/* PROYECTOS AVANZADOS */}
 
      <Grid item md={12} xs={12} color={'green'} textAlign={'center'} mb={'10px'}>
             <Typography variant="h2">Proyectos Avanzados</Typography>
+            <button class="btn-elegante" onClick={()=>handleShow('advance')}>Ver</button> 
      </Grid>
 
-     {/* carrusel */}
-
-     <Grid item md={7}  m={'auto'} mb={'5px'} className="itemProyect">
+     {
+      showAdvance &&
+      <>
+        <Grid item md={7}  m={'auto'} mb={'5px'} className="itemProyect">
       <Card sx={{ width: 800 }}  className="itemProyect">
 
         {/* 🖼 Carousel con imágenes */}
@@ -239,70 +255,76 @@ const Proyecto = ()=>{
         </CardActions>
 
       </Card>
-    </Grid>
+        </Grid>
 
-    <Grid item md={7} m={'auto'} mb={'5px'} mt={5} className="itemProyect">
-      <Card sx={{ width: 800 }} className="itemProyect">
+        <Grid item md={7} m={'auto'} mb={'5px'} mt={5} className="itemProyect">
+          <Card sx={{ width: 800 }} className="itemProyect">
 
-        {/* 🖼 Carousel con imágenes */}
-        <Carousel className='carousel'>
-          {images2.map((img, index) => (
-            <CardMedia
-              className='cardMedia'
-              key={index}
-              sx={{ height: 390, width: 'auto' }}
-              image={img.src}
-              title={img.title}
-            />
-          ))}
-        </Carousel>
+            {/* 🖼 Carousel con imágenes */}
+            <Carousel className='carousel'>
+              {images2.map((img, index) => (
+                <CardMedia
+                  className='cardMedia'
+                  key={index}
+                  sx={{ height: 390, width: 'auto' }}
+                  image={img.src}
+                  title={img.title}
+                />
+              ))}
+            </Carousel>
 
-        {/* 📌 Contenido de la Card */}
-        <CardContent style={{ backgroundColor: 'black', color: 'white' }}>
-          <Typography gutterBottom variant="h5" component="div">
-          🌍 Proyecto de Localización y Moneda
-          </Typography>
-          <Typography variant="body2" color="white">
-            🚀 Tecnologías Utilizadas
-            Backend: Node.js + Express
-            Frontend: React.js
-            Cliente HTTP: Axios
-            APIs Consumidas:
-            vatcomply.com → Para obtener información de monedas.
-            ipinfo.io / restcountries.com → Para geolocalización y datos del país.
-                      
-          </Typography>
-          <Typography variant="body2" color="white"> 
-            🎯 Objetivo del Proyecto
-          El proyecto permite obtener automáticamente la moneda local del usuario con base en su dirección IP. Se utiliza una combinación de APIs para determinar el país y luego consultar la moneda correspondiente.
-          </Typography>
-          <Typography variant="body2" color="white">
-          🔧 Funcionamiento
-            Obtener la dirección IP del usuario.
-            Se obtiene la IP desde el backend usando req.ip o una API externa.
-            Consultar la API de geolocalización.
-            Se usa una API similar para obtener el país del usuario.
-            Determinar la moneda del país.
-            Se consulta restcountries.com para obtener el código y símbolo de la moneda.
-            Mostrar la moneda en la interfaz de usuario.
-            El frontend en React muestra la información en tiempo real. Al igual que guarda el registro de las monedas buscadas en una base de datos MySql
-          </Typography>
-          
-        </CardContent>
+            {/* 📌 Contenido de la Card */}
+            <CardContent style={{ backgroundColor: 'black', color: 'white' }}>
+              <Typography gutterBottom variant="h5" component="div">
+              🌍 Proyecto de Localización y Moneda
+              </Typography>
+              <Typography variant="body2" color="white">
+                🚀 Tecnologías Utilizadas
+                Backend: Node.js + Express
+                Frontend: React.js
+                Cliente HTTP: Axios
+                APIs Consumidas:
+                vatcomply.com → Para obtener información de monedas.
+                ipinfo.io / restcountries.com → Para geolocalización y datos del país.
+                          
+              </Typography>
+              <Typography variant="body2" color="white"> 
+                🎯 Objetivo del Proyecto
+              El proyecto permite obtener automáticamente la moneda local del usuario con base en su dirección IP. Se utiliza una combinación de APIs para determinar el país y luego consultar la moneda correspondiente.
+              </Typography>
+              <Typography variant="body2" color="white">
+              🔧 Funcionamiento
+                Obtener la dirección IP del usuario.
+                Se obtiene la IP desde el backend usando req.ip o una API externa.
+                Consultar la API de geolocalización.
+                Se usa una API similar para obtener el país del usuario.
+                Determinar la moneda del país.
+                Se consulta restcountries.com para obtener el código y símbolo de la moneda.
+                Mostrar la moneda en la interfaz de usuario.
+                El frontend en React muestra la información en tiempo real. Al igual que guarda el registro de las monedas buscadas en una base de datos MySql
+              </Typography>
+              
+            </CardContent>
 
-        {/* 🔗 Enlace */}
-        <CardActions style={{ backgroundColor: 'black', color: 'white' }}>
-          Link:
-          <NavLink 
-            to="https://lnkd.in/eFmQeSW6" 
-            target="_blank" 
-            style={{ textDecoration: 'none', marginLeft: "55px", color: 'blue' }}>
-            https://lnkd.in/eFmQeSW6
-          </NavLink>
-        </CardActions>
+            {/* 🔗 Enlace */}
+            <CardActions style={{ backgroundColor: 'black', color: 'white' }}>
+              Link:
+              <NavLink 
+                to="https://lnkd.in/eFmQeSW6" 
+                target="_blank" 
+                style={{ textDecoration: 'none', marginLeft: "55px", color: 'blue' }}>
+                https://lnkd.in/eFmQeSW6
+              </NavLink>
+            </CardActions>
 
-      </Card>
-    </Grid>
+          </Card>
+        </Grid>
+      </>
+     }
+
+     {/* carrusel */}
+
+     
 
     </Grid>
     )

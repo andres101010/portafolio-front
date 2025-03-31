@@ -14,32 +14,58 @@ import mongo from '/src/assets/img/mongo.png'
 import postgress from '/src/assets/img/postgress.png'
 import sequelize from '/src/assets/img/sequelize.png'
 import react from '/src/assets/img/react.png'
-import './Imagen.css'
+import typeScript from '/src/assets/img/typescript.png'
+import jest from '/src/assets/img/jest.png'
 import { Grid,  CardActionArea } from '@mui/material'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import './imagen.css'
 
 const useImagen = () => {
   const [showImg, setShowImg] = useState(false)
   
-  const imagenes = [
-    {id:1,img: html, name: 'Html'},
-    {id:2,img: css, name: 'Css'},
-    {id:3,img: js, name: 'JavaScript'},
-    {id:4,img: bs, name: 'Bootstrap'},
-    {id:5,img: mu, name: 'Material UI'},
-    {id:6,img: node, name: 'Node.js'},
-    {id:7,img: express, name: 'Express.js'},
-    {id:8,img: mysql, name: 'MySql'},
-    {id:9,img: git, name: 'GitHub'},
-    {id:10,img: react, name: 'React.js'},
-    {id:11,img: mongo, name: 'Mongo'},
-    {id:12,img: sequelize, name: 'Sequelize'},
-    {id:13,img: postgress, name: 'Postgress'},
-    
-  ]
+  // const imagenes = [
+  //   {id:1,img: html, name: 'Html'},
+  //   {id:2,img: css, name: 'Css'},
+  //   {id:3,img: js, name: 'JavaScript'},
+  //   {id:4,img: bs, name: 'Bootstrap'},
+  //   {id:5,img: mu, name: 'Material UI'},
+  //   {id:6,img: node, name: 'Node.js'},
+  //   {id:7,img: express, name: 'Express.js'},
+  //   {id:8,img: mysql, name: 'MySql'},
+  //   {id:9,img: git, name: 'GitHub'},
+  //   {id:10,img: react, name: 'React.js'},
+  //   {id:11,img: mongo, name: 'Mongo'},
+  //   {id:12,img: sequelize, name: 'Sequelize'},
+  //   {id:13,img: postgress, name: 'Postgress'},
+  //   {id:14,img: typeScript, name: 'typeScript'},
+  //   {id:15,img: jest, name: 'jest'},
+  // ]
 
+  const imagenes = [
+    // Frontend
+    { id: 1, img: html, name: 'Html' },
+    { id: 2, img: css, name: 'Css' },
+    { id: 3, img: js, name: 'JavaScript' },
+    { id: 4, img: typeScript, name: 'TypeScript' },
+    { id: 5, img: react, name: 'React.js' },
+    { id: 6, img: bs, name: 'Bootstrap' },
+    { id: 7, img: mu, name: 'Material UI' },
+  
+    // Backend
+    { id: 8, img: node, name: 'Node.js' },
+    { id: 9, img: express, name: 'Express.js' },
+    { id: 10, img: mysql, name: 'MySQL' },
+    { id: 11, img: postgress, name: 'PostgreSQL' },
+    { id: 12, img: mongo, name: 'MongoDB' },
+    { id: 13, img: sequelize, name: 'Sequelize' },
+  
+    // Herramientas
+    { id: 14, img: git, name: 'GitHub' },
+    { id: 15, img: jest, name: 'Jest' }
+  ];
+  
   const timeOut = () => setTimeout(()=>{
     setShowImg(true)
    }, 2000)
@@ -87,7 +113,7 @@ Mi trayectoria incluye experiencia en empresas tecnológicas, proyectos colabora
      </Card>
          </Grid>
           <Grid item md={6} xs={12} mb={2} ml={5} mt={1}>
-          <Typography variant='h4' color={"orange"}>Habilidades :</Typography>
+          <Typography variant='h4' color={"orange"}>Habilidades</Typography>
 
           {
             showImg &&
@@ -101,7 +127,7 @@ Mi trayectoria incluye experiencia en empresas tecnológicas, proyectos colabora
             {imagenes.map((item, i) => (
               <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                 <p style={{color:'green'}}>{item.name}</p>
-                <img src={item.img} alt="imagen" style={{ margin: "5px" }} />
+                <img className='image' src={item.img} alt="imagen" />
               </div>
             ))}
           </div>

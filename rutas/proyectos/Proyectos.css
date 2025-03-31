@@ -21,3 +21,29 @@
         width: auto;
     }
 }
+
+
+.btn-elegante {
+    padding: 10px 20px;
+    background: linear-gradient(90deg, #007bff, #6610f2);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .btn-elegante:hover {
+    background: linear-gradient(90deg, #0056b3, #520dc2);
+    transform: scale(1.05);
+    box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.3);
+  }
+  
+  .btn-elegante:active {
+    transform: scale(0.98);
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  

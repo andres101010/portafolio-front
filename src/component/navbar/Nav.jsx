@@ -135,7 +135,7 @@ const useNav = () => {
                <NavLink to="/perfil" style={{color:'black', fontWeight:'bold', textDecoration:'none', fontFamily:'sans-serif', fontSize:'20px'}}> Perfil </NavLink><br />
                <NavLink to="/proyectos"  style={{color:'black', fontWeight:'bold', textDecoration:'none', fontFamily:'sans-serif',fontSize:'20px'}}>  Proyectos </NavLink><br />
                <NavLink to="/contacto"  style={{color:'black', fontWeight:'bold', textDecoration:'none',fontFamily:'sans-serif',fontSize:'20px'}}> Contacto </NavLink><br />
-               <NavLink to="/solicitudes"  style={{color:'black', fontWeight:'bold', textDecoration:'none',fontFamily:'sans-serif',fontSize:'20px'}}> Solicitudes </NavLink><br />
+               {/* <NavLink to="/solicitudes"  style={{color:'black', fontWeight:'bold', textDecoration:'none',fontFamily:'sans-serif',fontSize:'20px'}}> Solicitudes </NavLink><br /> */}
                {/* <NavLink to="/login"  style={{color:'black', fontWeight:'bold', textDecoration:'none',fontFamily:'sans-serif',fontSize:'20px'}}> Iniciar sesion </NavLink> */}
             </Menu>
           </Box>
@@ -162,7 +162,7 @@ const useNav = () => {
           <NavLink to="/perfil" style={style} onMouseEnter={ handleMouseEnter} onMouseLeave={handleMouseLeave} > Perfil </NavLink><br />
           <NavLink to="/proyectos"  style={style} onMouseEnter={ handleMouseEnter} onMouseLeave={handleMouseLeave}>  Proyectos </NavLink><br />
           <NavLink to="/contacto"  style={style} onMouseEnter={ handleMouseEnter} onMouseLeave={handleMouseLeave}> Contacto </NavLink><br />
-          <NavLink to="/solicitudes"  style={style} onMouseEnter={ handleMouseEnter} onMouseLeave={handleMouseLeave}> Solicitudes </NavLink><br />
+          {/* <NavLink to="/solicitudes"  style={style} onMouseEnter={ handleMouseEnter} onMouseLeave={handleMouseLeave}> Solicitudes </NavLink><br /> */}
           {/* <NavLink to="/login"  style={style} onMouseEnter={ handleMouseEnter} onMouseLeave={handleMouseLeave}> Iniciar sesion </NavLink> */}
           </Box>
 
