@@ -2,6 +2,7 @@ import { useState } from "react";
 export const useContact = () => {
     const [alertContact, setAlertContact] = useState(false);
     const [alertContactSuccess, setAlertContactSuccess] = useState(false);
+    const [showSpinner, setShowSpinner] = useState(false)
    
 
     const timeContactAlert = () => {
@@ -22,6 +23,8 @@ export const useContact = () => {
                  setAlertContactSuccess,
                  timeContactAlert,
                  timeContactAlertSuccess,
+                 showSpinner,
+                 setShowSpinner
                  
         }
 }

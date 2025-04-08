@@ -9,6 +9,7 @@ import { useGlobalState } from "../../src/component/hook/UseglobalState";
 import { sendSolicitud } from "../../src/component/services/ContactServices"; 
 import Alert from '@mui/material/Alert';
 import './Contacto.css'
+import Spinner from "../../src/component/spinner/spinner";
 
 const Contacto = ()=>{
   const { 
@@ -18,6 +19,8 @@ const Contacto = ()=>{
     setAlertContactSuccess,
     timeContactAlert,
     timeContactAlertSuccess,
+    showSpinner,
+    setShowSpinner
     
   } = useContact();
   
@@ -35,19 +38,27 @@ const Contacto = ()=>{
 
   const handleSubmit = async (event) => {
       event.preventDefault();
-      if(nombre ===    "" ||
-         correo ===    "" ||
-         telefono ===  "" ||
-         solicitud === "" ||
-         comentario === ""){
-            setAlertContact(true)
-            timeContactAlert()
-         }else { 
-          const  contact = {nombre,correo,telefono,solicitud,comentario}
-          const  datos = await sendSolicitud( contact)
-           setAlertContactSuccess(true)
-           timeContactAlertSuccess()
-         }
+      try {
+        if(nombre ===    "" ||
+          correo ===    "" ||
+          telefono ===  "" ||
+          solicitud === "" ||
+          comentario === ""){
+             setAlertContact(true)
+             timeContactAlert()
+          }else { 
+           setShowSpinner(true)
+           const  contact = {nombre,correo,telefono,solicitud,comentario}
+           const  datos = await sendSolicitud( contact)
+            setAlertContactSuccess(true)
+            timeContactAlertSuccess()
+          } 
+          setShowSpinner(false)
+      } catch (error) {
+        console.log("error", error)
+        setShowSpinner(false)
+      }
+    
     };
 
     return(
@@ -55,7 +66,7 @@ const Contacto = ()=>{
             <Grid item md={12} xs={12} textAlign={'center'} style={{color:'green'}}>
               <Typography variant="h2">Contacto</Typography>
             </Grid>
-          <Grid item md={6} xs={12} textAlign={'center'} style={{color:'orange'}} m={'auto'}>
+          <Grid item md={12} xs={12} textAlign={'center'} style={{color:'orange'}} m={'auto'}>
              <Typography variant="h2">Necesitas mas Informacion?</Typography>
              <p>Tienes un proyecto en mente, y no sabes por donde empezar?</p><br />
              <p>Puedes escribirme directamente:</p>
@@ -63,18 +74,23 @@ const Contacto = ()=>{
              <p><WhatsAppIcon /><NavLink style={{color:'orange', textDecoration:'none'}}> +5493884535200</NavLink></p>
              <p>Tambien puedes acceder al LINK de acceso directo a mis redes sociales al pie de la pagina.</p>
           </Grid>
-            <Grid item md={6} xs={12}  textAlign={'center'} style={{backgroundColor:'gray' , borderRadius:'10px', padding:'10px',marginTop:'5px'}} >
+            <Grid item md={12} xs={12}  textAlign={'center'} style={{backgroundColor:'gray' , borderRadius:'10px', padding:'10px',marginTop:'5px'}} >
             {
               alertContact &&  
                 <Alert severity="error">Debes de llenar todos los campos!!!!!!</Alert>        
             }
             {  alertContactSuccess ?
               <Grid item>
-                <Alert severity="success">Solicitud mandada con exito!!!!!! Puedes ver y editar en la seccion de SOLICITUDES.</Alert>
+                <Alert severity="success">Solicitud mandada con exito!!!!!!</Alert>
               </Grid>
-               :
-              <Grid item>
-                <Typography variant="h5" mb={3}> Haz tu solicitud!!! </Typography>
+               : showSpinner ?
+
+               <Grid item>
+                 <Spinner />
+              </Grid>
+              :
+              <Grid item >
+                <Typography variant="h2" mb={3}> Haz tu solicitud!!! </Typography>
                  <form onSubmit={handleSubmit}>
                     <FormControl>
                        <FormLabel style={{color:'white', fontSize:'20px'}}>Nombre</FormLabel>

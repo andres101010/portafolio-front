@@ -1,7 +1,9 @@
 import axios from 'axios';
+
+const url = "https://nodemailer-v8in.onrender.com"
 //****Funcion para crear una nueva solicitud */
 export const sendSolicitud = async (contact) => {
-  const response = await axios.post('http://localhost:3001/contacto/crear-solicitud', contact);
+  const response = await axios.post(`${url}/contacto/crear-solicitud`, contact);
   return response.data;
 }
 //****Funcion para Iniciar sesion */
