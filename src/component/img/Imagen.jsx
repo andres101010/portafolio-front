@@ -20,6 +20,8 @@ import { Grid,  CardActionArea } from '@mui/material'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import next from '/src/assets/img/next3.png'
+
 import './imagen.css'
 
 const useImagen = () => {
@@ -50,20 +52,21 @@ const useImagen = () => {
     { id: 3, img: js, name: 'JavaScript' },
     { id: 4, img: typeScript, name: 'TypeScript' },
     { id: 5, img: react, name: 'React.js' },
-    { id: 6, img: bs, name: 'Bootstrap' },
-    { id: 7, img: mu, name: 'Material UI' },
+    { id: 6, img: next, name: 'Next.js' },
+    { id: 7, img: bs, name: 'Bootstrap' },
+    { id: 8, img: mu, name: 'Material UI' },
   
     // Backend
-    { id: 8, img: node, name: 'Node.js' },
-    { id: 9, img: express, name: 'Express.js' },
-    { id: 10, img: mysql, name: 'MySQL' },
-    { id: 11, img: postgress, name: 'PostgreSQL' },
-    { id: 12, img: mongo, name: 'MongoDB' },
-    { id: 13, img: sequelize, name: 'Sequelize' },
+    { id: 9, img: node, name: 'Node.js' },
+    { id: 10, img: express, name: 'Express.js' },
+    { id: 11, img: mysql, name: 'MySQL' },
+    { id: 12, img: postgress, name: 'PostgreSQL' },
+    { id: 13, img: mongo, name: 'MongoDB' },
+    { id: 14, img: sequelize, name: 'Sequelize' },
   
     // Herramientas
-    { id: 14, img: git, name: 'GitHub' },
-    { id: 15, img: jest, name: 'Jest' }
+    { id: 15, img: git, name: 'GitHub' },
+    { id: 16, img: jest, name: 'Jest' }
   ];
   
   const timeOut = () => setTimeout(()=>{

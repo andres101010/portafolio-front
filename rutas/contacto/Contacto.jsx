@@ -95,10 +95,10 @@ const Contacto = ()=>{
                     <FormControl>
                        <FormLabel style={{color:'white', fontSize:'20px'}}>Nombre</FormLabel>
                        <TextField id="outlined-basic" label="Nombre" variant="filled" size="normal" onChange={changeNombre}/>
-                       <FormLabel  style={{color:'white', fontSize:'20px'}}>Correo</FormLabel>
-                       <TextField id="outlined-basic" label="Correo" variant="filled" size="normal" onChange={changeCorreo} />
+                       <FormLabel style={{color:'white', fontSize:'20px'}}>Correo</FormLabel>
+                       <TextField type="email" id="outlined-basic" label="Correo" variant="filled" size="normal" onChange={changeCorreo} />
                        <FormLabel  style={{color:'white', fontSize:'20px'}}>Telefono</FormLabel>
-                       <TextField id="outlined-basic" label="Telefono" variant="filled" size="normal"  onChange={changeTelefono}/>
+                       <TextField type="number" id="outlined-basic" label="Telefono" variant="filled" size="normal"  onChange={changeTelefono}/>
                        <FormLabel  style={{color:'white', fontSize:'20px'}}>Solicitud</FormLabel>
                        <TextField id="outlined-basic" label="Solicitud" variant="filled" size="normal"  onChange={changeSolicitud}/>
                        <FormLabel  style={{color:'white', fontSize:'20px'}}>Comentario</FormLabel>

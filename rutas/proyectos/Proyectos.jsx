@@ -23,6 +23,9 @@ import location1 from '/src/assets/img/location1.png'
 import location2 from '/src/assets/img/location2.png'
 import location3 from '/src/assets/img/location3.png'
 
+import tareas1 from '/src/assets/img/next1.jpg'
+import tareas2 from '/src/assets/img/next2.jpg'
+
 
 import { NavLink } from "react-router-dom";
 import useProyect from '../../src/component/hook/useProyect';
@@ -49,11 +52,17 @@ const Proyecto = ()=>{
     { src: location3, title: 'location 3' },
     
   ];
+
+  const images3 = [
+    {src: tareas1, title: 'tarea1'},
+    {src: tareas2, title: 'tarea2'},
+  ];
+  
     return(
         <Grid container m={"auto"} alignItems="center" justifyContent="center" style={{ minHeight: "80vh" }}>
             <Grid item md={12} xs={12} color={'green'} textAlign={'center'} mb={'10px'}>
             <Typography variant="h2">Proyectos Iniciales</Typography>
-            <button class="btn-elegante" onClick={()=>handleShow('inicial')}>Ver</button>
+            <button className="btn-elegante" onClick={()=>handleShow('inicial')}>{showInicial ? "Ocultar": "Ver"}</button>
             </Grid>
 
       {
@@ -198,7 +207,7 @@ const Proyecto = ()=>{
 
      <Grid item md={12} xs={12} color={'green'} textAlign={'center'} mb={'10px'}>
             <Typography variant="h2">Proyectos Avanzados</Typography>
-            <button class="btn-elegante" onClick={()=>handleShow('advance')}>Ver</button> 
+            <button className="btn-elegante" onClick={()=>handleShow('advance')}>{showAdvance ? "Ocultar" : "Ver"}</button> 
      </Grid>
 
      {
@@ -314,6 +323,72 @@ const Proyecto = ()=>{
                 target="_blank" 
                 style={{ textDecoration: 'none', marginLeft: "55px", color: 'blue' }}>
                 https://lnkd.in/eFmQeSW6
+              </NavLink>
+            </CardActions>
+
+          </Card>
+        </Grid>
+
+        <Grid item md={7} m={'auto'} mb={'5px'} mt={5} className="itemProyect">
+          <Card sx={{ width: 800 }} className="itemProyect">
+
+            {/* 🖼 Carousel con imágenes */}
+            <Carousel className='carousel'>
+              {images3.map((img, index) => (
+                <CardMedia
+                  className='cardMedia'
+                  key={index}
+                  sx={{ height: 390, width: 'auto' }}
+                  image={img.src}
+                  title={img.title}
+                />
+              ))}
+            </Carousel>
+
+            {/* 📌 Contenido de la Card */}
+            <CardContent style={{ backgroundColor: 'black', color: 'white' }}>
+              <Typography gutterBottom variant="h5" component="div">
+                Gestor de Tareas - Proyecto Full Stack con Next.js, MySQL y JWT
+              </Typography>
+              <Typography variant="body2" color="white">
+                🚀 Tecnologías Utilizadas : 
+                Frontend:
+                  Next.js: Framework de React para desarrollo full stack con enrutado del lado del servidor (SSR) y generación estática (SSG).
+
+                  Tailwind CSS: Framework de estilos para una interfaz moderna, responsiva y totalmente personalizada.
+
+                  TypeScript: Tipado estático que mejora la escalabilidad y la calidad del código.
+
+                  React Context API: Manejo de estado global para mantener la sesión del usuario activa y compartir información entre componentes.
+
+                  Backend / API:
+
+                  API Routes de Next.js: Para construir endpoints RESTful integrados directamente en la misma aplicación.
+                  JWT (JSON Web Token): Autenticación segura mediante tokens firmados que protegen las rutas privadas.
+                  MySQL: Base de datos relacional para almacenar usuarios y tareas, con claves foráneas para garantizar la integridad de los datos y relaciones uno a muchos (un usuario puede tener muchas tareas).
+                          
+              </Typography>
+              <Typography variant="body2" color="white"> 
+                🎯 Objetivo del Proyecto :
+                Este proyecto busca demostrar el uso integrado de herramientas modernas para construir una aplicación web completa, segura y funcional desde cero. Fue pensado tanto como una práctica
+                de arquitectura full stack como una muestra de habilidades en interfaces limpias y desarrollo orientado al usuario.
+              </Typography>
+              <Typography variant="body2" color="white">
+              🔧 Funcionamiento :
+              Este proyecto es una aplicación web de gestión de tareas (To-Do List) diseñada para que cada usuario pueda registrar, visualizar, crear, editar y eliminar sus propias tareas. Fue desarrollada
+              como una solución full stack utilizando tecnologías modernas y buenas prácticas de desarrollo web.
+              </Typography>
+              
+            </CardContent>
+
+            {/* 🔗 Enlace */}
+            <CardActions style={{ backgroundColor: 'black', color: 'white' }}>
+              Link:
+              <NavLink 
+                to="https://lista-de-tareas-roan.vercel.app/" 
+                target="_blank" 
+                style={{ textDecoration: 'none', marginLeft: "55px", color: 'blue' }}>
+                https://lista-de-tareas-roan.vercel.app/
               </NavLink>
             </CardActions>
 
